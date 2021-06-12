@@ -28,7 +28,7 @@ def arrayanalysis(xyz):
 
     :param :class:'numpy.ndarray'xyz
     """
-    correlations, pvalues = np.zeros([3, 3]), np.zeros([3, 3])
+    correlations, pvalues = np.zeros([xyz.shape[1], xyz.shape[1]]), np.zeros([xyz.shape[1], xyz.shape[1]])
 
     product = it.product(np.hsplit(xyz, xyz.shape[1]), np.hsplit(xyz, xyz.shape[1]))
     tempList = [runNumpyKT(np.squeeze(i[0]), np.squeeze(i[1]), 'local') for i in product]
