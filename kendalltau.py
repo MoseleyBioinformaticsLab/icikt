@@ -23,24 +23,26 @@ def runNumpyKT(x, y, type='global'):
     return [corr, pval]
 
 
-def arrayanalysis(xyz):
+def array_analysis(xyz):
     """Iterates over the columns of data and calls runNumpyKT on them to find data.
 
     :param :class:'numpy.ndarray'xyz
     """
-    correlations, pvalues = np.zeros([xyz.shape[1], xyz.shape[1]]), np.zeros([xyz.shape[1], xyz.shape[1]])
+    size = xyz.shape[1]
+    correlations, pvalues = np.zeros([size, size]), np.zeros([size, size])
 
-    product = it.product(np.hsplit(xyz, xyz.shape[1]), np.hsplit(xyz, xyz.shape[1]))
+    product = it.product(np.hsplit(xyz, size), np.hsplit(xyz, size))
     tempList = [runNumpyKT(np.squeeze(i[0]), np.squeeze(i[1]), 'local') for i in product]
 
-    length = int(len(tempList)/xyz.shape[1])
+    length = int(len(tempList)/size)
     for a in range(length):
-        for i in range(xyz.shape[1]):
-            correlations[a, i] = tempList[i+a*(xyz.shape[1])][0]
-            pvalues[a, i] = tempList[i+a*(xyz.shape[1])][1]
-
+        for i in range(size):
+            correlations[a, i] = tempList[i + a * size][0]
+            pvalues[a, i] = tempList[i + a * size][1]
+    
     print(correlations)
     print(pvalues)
+
 
 
 def main():
@@ -51,7 +53,7 @@ def main():
     z = np.array([6, 10, np.nan, 3, 9, 14])
     xyz = np.column_stack((x, y, z))
     # runNumpyKT(x, y, 'local')
-    arrayanalysis(xyz)
+    array_analysis(xyz)
 
 
 if __name__ == "__main__":
