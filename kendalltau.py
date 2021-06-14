@@ -24,25 +24,28 @@ def runNumpyKT(x, y, type='global'):
 
 
 def array_analysis(xyz):
-    """Iterates over the columns of data and calls runNumpyKT on them to find data.
+    """Calls runNumpyKT to calculate ICI-Kendall-Tau between every combination of
+    columns in the 2d array.
 
     :param :class:'numpy.ndarray'xyz
+    :return: tuple of the correlations and pvalues 2d arrays
     """
     size = xyz.shape[1]
     correlations, pvalues = np.zeros([size, size]), np.zeros([size, size])
 
+    # produces every combination of columns in the array
     product = it.product(np.hsplit(xyz, size), np.hsplit(xyz, size))
+    # calls runNumpyKT to calculate ICIKendallTau for every combination in product and stores in a list
     tempList = [runNumpyKT(np.squeeze(i[0]), np.squeeze(i[1]), 'local') for i in product]
 
+    # separates+stores the correlation & pvalue data from every combination at the correct location in the output arrays
     length = int(len(tempList)/size)
     for a in range(length):
         for i in range(size):
             correlations[a, i] = tempList[i + a * size][0]
             pvalues[a, i] = tempList[i + a * size][1]
-    
-    print(correlations)
-    print(pvalues)
 
+    return correlations, pvalues
 
 
 def main():
@@ -53,7 +56,9 @@ def main():
     z = np.array([6, 10, np.nan, 3, 9, 14])
     xyz = np.column_stack((x, y, z))
     # runNumpyKT(x, y, 'local')
-    array_analysis(xyz)
+    corr, pval = array_analysis(xyz)
+    print(corr)
+    print(pval)
 
 
 if __name__ == "__main__":
