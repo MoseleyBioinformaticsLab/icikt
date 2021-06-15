@@ -64,10 +64,13 @@ def main():
 
     largeArray = np.genfromtxt('D:/large_transcript.csv', delimiter=",")
     tmpArray = largeArray[..., 0:50]
+    sTime = time.time()
     corr, pval = iciktArray(tmpArray, replaceVal=0)
+    fTime = time.time()
 
-    print(corr)
-    print(pval)
+    # print(corr)
+    # print(pval)
+    print(fTime - sTime)
 
 
 if __name__ == "__main__":
