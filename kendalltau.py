@@ -2,6 +2,7 @@ import numpy as np
 import scipy.stats as sci
 import itertools as it
 import time
+import multiprocessing
 
 
 def iciKT(x, y, type='global'):
@@ -40,7 +41,11 @@ def iciktArray(xyz, replaceVal=None):
     # produces every combination of columns in the array
     product = it.product(np.hsplit(xyz, size), np.hsplit(xyz, size))
     # calls runNumpyKT to calculate ICIKendallTau for every combination in product and stores in a list
-    tempList = [iciKT(np.squeeze(i[0]), np.squeeze(i[1]), 'local') for i in product]
+
+    # tempList = [iciKT(np.squeeze(i[0]), np.squeeze(i[1]), 'local') for i in product]
+
+    with multiprocessing.Pool() as pool:
+        tempList = pool.starmap(iciKT, ((*i, 'local') for i in product))
 
     # separates+stores the correlation & pvalue data from every combination at the correct location in the output arrays
     length = int(len(tempList)/size)
@@ -61,15 +66,15 @@ def main():
     # xyz = np.column_stack((x, y, z))
     # runNumpyKT(x, y, 'local')
     # corr, pval = iciktArray(xyz, replaceVal=6)
-
     largeArray = np.genfromtxt('D:/large_transcript.csv', delimiter=",")
     tmpArray = largeArray[..., 0:50]
+
     sTime = time.time()
     corr, pval = iciktArray(tmpArray, replaceVal=0)
     fTime = time.time()
 
-    # print(corr)
-    # print(pval)
+    print(corr)
+    print(pval)
     print(fTime - sTime)
 
 
