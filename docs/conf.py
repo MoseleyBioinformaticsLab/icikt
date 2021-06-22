@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'pythonICIKendallTau'
-copyright = '2021, Praneeth S. Bhatt, Robert M. Flight'
+copyright = '2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 author = 'Praneeth S. Bhatt, Robert M. Flight'
 
 # The full version, including alpha/beta/rc tags
