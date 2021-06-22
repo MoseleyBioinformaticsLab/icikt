@@ -84,7 +84,7 @@ def smallTest():
 
 def bigTest():
 
-    largeArray = np.genfromtxt('D:/bigTest.csv', delimiter=",")
+    largeArray = np.genfromtxt('~/projects/pythonICIKendallTau/pyicikendalltau/bigTest.csv', delimiter=",")
 
     sTime = time.time()
     corr, pval = iciktArray(largeArray)
