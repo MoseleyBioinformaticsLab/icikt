@@ -6,6 +6,8 @@
 Welcome to pythonICIKendallTau's documentation!
 ===============================================
 
+.. include:: ../README.rst
+
 Documentation index:
 ====================
 
