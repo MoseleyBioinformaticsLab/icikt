@@ -37,10 +37,6 @@ Basic usage
 -----------
 
 
-CHANGELOG
----------
-
-
 License
 -------
 
