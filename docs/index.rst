@@ -13,7 +13,6 @@ Documentation index:
    guide
    tutorial
    api
-   LICENSE
 
 
 
