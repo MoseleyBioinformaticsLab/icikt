@@ -6,6 +6,9 @@
 Welcome to pythonICIKendallTau's documentation!
 ===============================================
 
+Documentation index:
+====================
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
@@ -13,6 +16,7 @@ Welcome to pythonICIKendallTau's documentation!
    guide
    tutorial
    api
+   LICENSE
 
 
 
