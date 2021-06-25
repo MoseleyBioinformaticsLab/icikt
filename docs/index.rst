@@ -3,7 +3,7 @@ Welcome to pythonICIKendallTau's documentation!
 
 .. include:: ../README.rst
 
-.. automodule:: pyicikendalltau/kendalltau.py
+.. automodule:: pyicikendalltau.kendalltau.py
     :members:
 
 Documentation index:
