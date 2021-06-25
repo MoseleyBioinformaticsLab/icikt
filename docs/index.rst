@@ -3,15 +3,12 @@ Welcome to pythonICIKendallTau's documentation!
 
 .. include:: ../README.rst
 
-Documentation index:
-====================
-
 .. automodule:: pyicikendalltau.kendalltau
     :members:
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :caption: Contents:
    
    guide
    tutorial
