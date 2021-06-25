@@ -6,6 +6,9 @@ Welcome to pythonICIKendallTau's documentation!
 Documentation index:
 ====================
 
+.. automodule:: pyicikendalltau.kendalltau
+    :members:
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
