@@ -3,9 +3,6 @@ Welcome to pythonICIKendallTau's documentation!
 
 .. include:: ../README.rst
 
-.. automodule:: pyicikendalltau.kendalltau
-    :members:
-
 Documentation index:
 ====================
 
