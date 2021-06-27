@@ -16,7 +16,7 @@ def iciKT(x, y, type='global'):
     :param type: Default is 'global'
     :type type: str
     :return: List with correlation and pvalue
-    :rtype: list
+    :rtype: :py:class:'list'
     """
 
     if type == 'local':
@@ -41,7 +41,7 @@ def iciktArray(dataArray, replaceVal=None):
     :param replaceVal: Optional value to replace with np.nan. Default is None.
     :type replaceVal: int or float or None
     :return: tuple of the correlations and pvalues 2d arrays
-    :rtype: tuple
+    :rtype: :py:class:'tuple'
     """
 
     if replaceVal is not None:
