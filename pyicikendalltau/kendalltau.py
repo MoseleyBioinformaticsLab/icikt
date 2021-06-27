@@ -3,16 +3,20 @@ import scipy.stats as sci
 import itertools as it
 import time
 import multiprocessing
+import sys
 
 
 def iciKT(x, y, type='global'):
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
 
-    :param :class:'numpy.ndarray'x
-    :param :class:'numpy.ndarray'y
-    :param :py:class:'str'type: Default is 'global'.
+    :param x: First array of data
+    :type x: np.ndarray
+    :param y: Second array of data
+    :type y: np.ndarray
+    :param type: Default is 'global'
+    :type type: str
     :return: List with correlation and pvalue
-    :rtype: :py:class:'list'
+    :rtype: list
     """
 
     if type == 'local':
@@ -32,11 +36,12 @@ def iciktArray(dataArray, replaceVal=None):
     """Calls iciKT to calculate ICI-Kendall-Tau between every combination of
     columns in the input 2d array, dataArray. Also replaces any instance of the replaceVal in the array with np.nan.
 
-    :param :class:'numpy.ndarray'dataArray
+    :param dataArray: 2d array with columns of data to analyze
+    :type dataArray: np.ndarray
     :param replaceVal: Optional value to replace with np.nan. Default is None.
-    :type replaceVal: :py:class:'NoneType.None' or :py:class:'int' or :py:class:'double' or py:class:'float'
+    :type replaceVal: int or float or None
     :return: tuple of the correlations and pvalues 2d arrays
-    :rtype: :py:class:'tuple'
+    :rtype: tuple
     """
 
     if replaceVal is not None:
