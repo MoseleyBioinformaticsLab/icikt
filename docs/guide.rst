@@ -11,19 +11,20 @@ Installation
 
 Install on Linux, Mac OS X
 --------------------------
+ TBD
 
 
 Install on Windows
 ------------------
-
+ TBD
 
 Install inside virtualenv
 -------------------------
-
+ TBD
 
 Get the source code
 ~~~~~~~~~~~~~~~~~~~
-
+ TBD
 
 Dependencies
 ~~~~~~~~~~~~
