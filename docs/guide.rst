@@ -28,7 +28,7 @@ Get the source code
 
 Dependencies
 ~~~~~~~~~~~~
-The :mod:`pyicikt` package depends on several Python libraries. The ``pip`` command
+The :mod:`pythonICIKendallTau` package depends on several Python libraries. The ``pip`` command
 will install all dependencies automatically, but if you wish to install them manually,
 run the following commands:
 
