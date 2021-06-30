@@ -3,7 +3,7 @@ User Guide
 
 Description
 ~~~~~~~~~~~
-The `pythonICIKendallTau` package handles missing data before calculating a correlation
+The :mod:`pythonICIKendallTau` package handles missing data before calculating a correlation
 between datasets for variables.
 
 Installation
