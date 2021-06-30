@@ -53,4 +53,7 @@ run the following commands:
 Basic usage
 ~~~~~~~~~~~
 The :mod:`pythonICIKendallTau` package can be used in two ways:
-    *
+    *Calculating correlation between  2 variables
+        *
+    *Calculating correlations between n variables
+        *
