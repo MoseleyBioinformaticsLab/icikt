@@ -54,6 +54,7 @@ Basic usage
 ~~~~~~~~~~~
 The :mod:`pythonICIKendallTau` package can be used in two ways:
      * Calculating correlation between  2 variables
-         *
+         * Inputing 2 1d arrays for each variable into the iciKT function will return 
+         a short list containing the correlation value and p-value.
      * Calculating correlations between n variables
          *
