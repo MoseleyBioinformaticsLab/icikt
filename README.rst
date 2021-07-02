@@ -53,6 +53,11 @@ Upgrade on Windows
 GitHub Package installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Make sure you have git_ installed:
+
+.. code:: bash
+
+   git clone https://github.com/MoseleyBioinformaticsLab/pythonICIKendallTau.git
 
 Dependencies
 ~~~~~~~~~~~~
