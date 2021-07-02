@@ -2,32 +2,55 @@ User Guide
 ==========
 
 Description
-~~~~~~~~~~~
+-----------
 The :mod:`pythonICIKendallTau` package handles missing data before calculating a correlation
 between datasets for variables.
 
 Installation
-~~~~~~~~~~~~
+--------------
+The ``pyICIKendallTau`` package runs under Python 3.4+. Use pip_ to install.
+Starting with Python 3.4, pip_ is included by default.
+
 
 Install on Linux, Mac OS X
---------------------------
- TBD
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+   python3 -m pip install pyicikt
 
 
 Install on Windows
-------------------
- TBD
+~~~~~~~~~~~~~~~~~~
 
-Install inside virtualenv
--------------------------
- TBD
+.. code:: bash
+
+   py -3 -m pip install pyicikt
+
+
+Upgrade on Linux, Mac OS X
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+   python3 -m pip install pyicikt --upgrade
+
+
+Upgrade on Windows
+~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+   py -3 -m pip install pyicikt --upgrade
+
+
 
 Get the source code
 ~~~~~~~~~~~~~~~~~~~
  TBD
 
 Dependencies
-~~~~~~~~~~~~
+------------
 The :mod:`pythonICIKendallTau` package depends on several Python libraries. The ``pip`` command
 will install all dependencies automatically, but if you wish to install them manually,
 run the following commands:
@@ -51,7 +74,7 @@ run the following commands:
 
 
 Basic usage
-~~~~~~~~~~~
+-----------
 The :mod:`pythonICIKendallTau` package can be used in two ways:
      * Calculating correlation between  2 variables
          * Inputing 2 1d arrays for each variable into the iciKT function will return 
