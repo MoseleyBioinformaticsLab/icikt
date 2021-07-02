@@ -56,7 +56,6 @@ GitHub Package installation
 
 Dependencies
 ~~~~~~~~~~~~
-
 ``pythonICIKendallTau`` requires the following Python libraries:
    * numpy_ and scipy_ for mathmatical calculations.
 
