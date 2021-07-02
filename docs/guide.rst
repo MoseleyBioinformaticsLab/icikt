@@ -3,7 +3,7 @@ User Guide
 
 Description
 -----------
-The :mod:`pythonICIKendallTau` package handles missing data before calculating a correlation
+The ``pythonICIKendallTau`` package handles missing data before calculating a correlation
 between datasets for variables.
 
 Installation
@@ -51,7 +51,7 @@ Get the source code
 
 Dependencies
 ------------
-The :mod:`pythonICIKendallTau` package depends on several Python libraries. The ``pip`` command
+The ``pythonICIKendallTau`` package depends on several Python libraries. The ``pip`` command
 will install all dependencies automatically, but if you wish to install them manually,
 run the following commands:
 
