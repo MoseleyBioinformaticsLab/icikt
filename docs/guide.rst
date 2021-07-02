@@ -8,7 +8,7 @@ between datasets for variables.
 
 Installation
 --------------
-The ``pyICIKendallTau`` package runs under Python 3.4+. Use pip_ to install.
+The ``pythonICIKendallTau`` package runs under Python 3.4+. Use pip_ to install.
 Starting with Python 3.4, pip_ is included by default.
 
 
@@ -75,6 +75,6 @@ run the following commands:
 
 Basic usage
 -----------
-To use the ``pyICIKendallTau`` package, input a 2d array with n columns each representing
+To use the ``pythonICIKendallTau`` package, input a 2d array with n columns each representing
 an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlation and p-values.
 Each element will correspond to the result of a combination of two columns in the input array.
