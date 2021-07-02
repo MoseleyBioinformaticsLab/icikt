@@ -3,7 +3,7 @@ pythonICIKendallTau
 
 Description
 --------------
-The 'pythonICIKendallTau' package provides a Python tool to calculate the
+The ``pythonICIKendallTau`` package provides a Python tool to calculate the
 Kendall Tau correlation coefficient between arrays, while also handling missing
 values or values which need to be removed.
 
@@ -57,7 +57,7 @@ GitHub Package installation
 Dependencies
 ~~~~~~~~~~~~
 
-`pythonICIKendallTau` requires the following Python libraries:
+``pythonICIKendallTau`` requires the following Python libraries:
    * numpy_ and scipy_ for mathmatical calculations.
 
 To install dependencies manually:
