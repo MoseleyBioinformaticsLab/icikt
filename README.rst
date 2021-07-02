@@ -18,7 +18,7 @@ Starting with Python 3.4, pip_ is included by default.
 
 
 Install on Linux, Mac OS X
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -26,7 +26,7 @@ Install on Linux, Mac OS X
 
 
 Install on Windows
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -34,7 +34,7 @@ Install on Windows
 
 
 Upgrade on Linux, Mac OS X
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -42,7 +42,7 @@ Upgrade on Linux, Mac OS X
 
 
 Upgrade on Windows
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
