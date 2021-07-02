@@ -75,9 +75,6 @@ run the following commands:
 
 Basic usage
 -----------
-The :mod:`pythonICIKendallTau` package can be used in two ways:
-     * Calculating correlation between  2 variables
-         * Inputing 2 1d arrays for each variable into the iciKT function will return 
-           a short list containing the correlation value and p-value.
-     * Calculating correlations between n variables
-         *
+To use the ``pyICIKendallTau`` package, input a 2d array with n columns each representing
+an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlation and p-values.
+Each element will correspond to the result of a combination of two columns in the input array.
