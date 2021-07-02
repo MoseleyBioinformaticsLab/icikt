@@ -13,6 +13,41 @@ Citation
 
 Installation
 --------------
+The ``pyICIKendallTau`` package runs under Python 3.4+. Use pip_ to install.
+Starting with Python 3.4, pip_ is included by default.
+
+
+Install on Linux, Mac OS X
+--------------------------
+
+.. code:: bash
+
+   python3 -m pip install pyicikt
+
+
+Install on Windows
+------------------
+
+.. code:: bash
+
+   py -3 -m pip install pyicikt
+
+
+Upgrade on Linux, Mac OS X
+--------------------------
+
+.. code:: bash
+
+   python3 -m pip install pyicikt --upgrade
+
+
+Upgrade on Windows
+------------------
+
+.. code:: bash
+
+   py -3 -m pip install pyicikt --upgrade
+
 
 
 GitHub Package installation
