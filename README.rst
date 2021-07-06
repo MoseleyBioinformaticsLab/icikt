@@ -7,9 +7,6 @@ The ``pythonICIKendallTau`` package provides a Python tool to calculate the
 Kendall Tau correlation coefficient between arrays, while also handling missing
 values or values which need to be removed.
 
-Citation
---------------
-
 
 Installation
 --------------
