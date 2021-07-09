@@ -11,7 +11,6 @@ Documentation index:
    :caption: Contents:
 
    guide
-   tutorial
    api
 
 
