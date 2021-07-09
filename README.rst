@@ -3,7 +3,7 @@ pythonICIKendallTau
 
 Description
 --------------
-The ``pythonICIKendallTau`` package provides a Python tool to calculate the
+The ``pythonICIKendallTau`` package provides a Python tool to calculate a
 Kendall Tau correlation coefficient between arrays, while also handling missing
 values or values which need to be removed.
 
@@ -73,7 +73,7 @@ Basic usage
 -----------
 
 To use the ``pythonICIKendallTau`` package, input a 2d array with n columns each representing
-an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlation and p-values.
+an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlations and p-values.
 Each element will correspond to the result of a combination of two columns in the input array.
 
 License
