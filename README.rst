@@ -3,8 +3,8 @@ pythonICIKendallTau
 
 Description
 --------------
-The ``pythonICIKendallTau`` package provides a Python tool to calculate an Information-Content-Informed
- Kendall Tau correlation coefficient between arrays, while also handling missing
+The ``pythonICIKendallTau`` package provides a Python tool to calculate an Information-Content-Informed 
+Kendall Tau correlation coefficient between arrays, while also handling missing
 values or values which need to be removed.
 
 
