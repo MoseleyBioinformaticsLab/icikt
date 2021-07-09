@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('../'))
 
 project = 'pythonICIKendallTau'
 copyright = '2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
-author = 'Praneeth S. Bhatt, Robert M. Flight'
+author = 'Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 
 # The full version, including alpha/beta/rc tags
 release = '1'
