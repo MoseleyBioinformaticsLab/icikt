@@ -10,13 +10,13 @@ def iciKT(x, y, type='global'):
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
 
     :param x: First array of data
-    :type x: np.ndarray
+    :type x: :class:`numpy.ndarray`
     :param y: Second array of data
-    :type y: np.ndarray
-    :param type: Default is 'global'
-    :type type: str
+    :type y: :class:`numpy.ndarray`
+    :param type: type can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
+    :type type: :py:class:`str`
     :return: List with correlation and pvalue
-    :rtype: :py:class:'list'
+    :rtype: :py:class:`list`
     """
 
     if type == 'local':
@@ -37,11 +37,11 @@ def iciktArray(dataArray, replaceVal=None):
     columns in the input 2d array, dataArray. Also replaces any instance of the replaceVal in the array with np.nan.
 
     :param dataArray: 2d array with columns of data to analyze
-    :type dataArray: np.ndarray
+    :type dataArray: :class:`numpy.ndarray`
     :param replaceVal: Optional value to replace with np.nan. Default is None.
-    :type replaceVal: int or float or None
+    :type replaceVal: :py:class:`int` or :py:class:`float` or :class:`None`
     :return: tuple of the correlations and pvalues 2d arrays
-    :rtype: :py:class:'tuple'
+    :rtype: :py:class:`tuple`
     """
 
     if replaceVal is not None:
