@@ -4,7 +4,9 @@ User Guide
 Description
 -----------
 The ``pythonICIKendallTau`` package handles missing data before calculating a correlation
-between datasets for variables.
+between datasets for variables. The missing values are treated as information from a 
+left-centered distribution persepective and are included in the calculation of concordant
+and discordant pairs used in calculating the correlation value.
 
 Installation
 --------------
@@ -76,7 +78,7 @@ run the following commands:
 Basic usage
 -----------
 To use the ``pythonICIKendallTau`` package, input a 2d array with n columns each representing
-an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlation and p-values.
+an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlations and p-values.
 Each element will correspond to the result of a combination of two columns in the input array.
 
 
