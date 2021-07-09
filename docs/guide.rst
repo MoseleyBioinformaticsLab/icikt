@@ -5,7 +5,7 @@ Description
 -----------
 The ``pythonICIKendallTau`` package handles missing data before calculating a correlation
 between datasets for variables. The missing values are treated as information from a 
-left-centered distribution persepective and are included in the calculation of concordant
+left-centered distribution perspective and are included in the calculation of concordant
 and discordant pairs used in calculating the correlation value.
 
 Installation
