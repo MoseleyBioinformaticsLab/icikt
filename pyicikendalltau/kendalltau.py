@@ -1,9 +1,25 @@
+# noinspection PySingleQuotedDocstring
+'''
+Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Usage:
+    kendalltau.py iciKT <firstArray> <secondArray> <type>
+    kendalltau.py iciKTArray <2dArray> <replaceValue> <type>
+    kendalltau.py -h | --help
+
+Options:
+    -h, --help                          Shows this screen.
+'''
+
+
 import numpy as np
 import scipy.stats as sci
 import itertools as it
 import time
 import multiprocessing
-import sys
+import docopt
 
 
 def iciKT(x, y, type='global'):
@@ -32,7 +48,7 @@ def iciKT(x, y, type='global'):
     return [corr, pval]
 
 
-def iciktArray(dataArray, replaceVal=None):
+def iciktArray(dataArray, replaceVal=None, type='global'):
     """Calls iciKT to calculate ICI-Kendall-Tau between every combination of
     columns in the input 2d array, dataArray. Also replaces any instance of the replaceVal in the array with np.nan.
 
@@ -40,6 +56,8 @@ def iciktArray(dataArray, replaceVal=None):
     :type dataArray: :class:`numpy.ndarray`
     :param replaceVal: Optional value to replace with np.nan. Default is None.
     :type replaceVal: :py:class:`int` or :py:class:`float` or :class:`None`
+    :param type: type can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
+    :type type: :py:class:`str`
     :return: tuple of the correlations and pvalues 2d arrays
     :rtype: :py:class:`tuple`
     """
@@ -55,7 +73,7 @@ def iciktArray(dataArray, replaceVal=None):
 
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
     with multiprocessing.Pool() as pool:
-        tempList = pool.starmap(iciKT, ((*i, 'local') for i in product))
+        tempList = pool.starmap(iciKT, ((*i, type) for i in product))
 
     # separates+stores the correlation & pvalue data from every combination at the correct location in the output arrays
     length = int(len(tempList)/size)
@@ -101,4 +119,11 @@ def bigTest():
 
 
 if __name__ == "__main__":
-    main()
+    args = docopt.docopt(__doc__)
+    if args["iciKT"]:
+        iciKT(args["<firstArray>"], args["<secondArray>"], args["<type>"])
+    else:
+        if args["iciKTArray"]:
+            iciktArray(args["<2dArray>"], args["<replaceValue>"], args["<type>"])
+
+
