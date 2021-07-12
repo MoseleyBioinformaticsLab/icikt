@@ -1,5 +1,4 @@
-# noinspection PySingleQuotedDocstring
-'''
+"""
 Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -11,7 +10,7 @@ Usage:
 
 Options:
     -h, --help                          Shows this screen.
-'''
+"""
 
 
 import numpy as np
