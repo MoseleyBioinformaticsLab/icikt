@@ -4,8 +4,7 @@ Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
 
 
 Usage:
-    kendalltau.py iciKT <firstArray> <secondArray> <type>
-    kendalltau.py iciKTArray <2dArray> <replaceValue> <type>
+    kendalltau.py iciKTArray <2dArray> [<replaceValue>] <type>
     kendalltau.py -h | --help
 
 Options:
@@ -84,8 +83,14 @@ def iciktArray(dataArray, replaceVal=None, type='global'):
     return corrArray, pvalArray
 
 
-def main():
-    bigTest()
+def main(args):
+    # make options for csv or tab-delimited file
+    if args["iciKTArray"]:
+        args["<2dArray>"] = np.genfromtxt(args["<2dArray>"], delimiter=',')
+        if args["replaceValue"] != "None" or None:
+            args["replaceValue"] = float(args["replaceValue"])
+        iciktArray(args["<2dArray>"], args["<replaceValue>"], args["<type>"])
+
 
 
 def smallTest():
@@ -119,10 +124,6 @@ def bigTest():
 
 if __name__ == "__main__":
     args = docopt.docopt(__doc__)
-    if args["iciKT"]:
-        iciKT(args["<firstArray>"], args["<secondArray>"], args["<type>"])
-    else:
-        if args["iciKTArray"]:
-            iciktArray(args["<2dArray>"], args["<replaceValue>"], args["<type>"])
+    main(args)
 
 
