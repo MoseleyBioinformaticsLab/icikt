@@ -80,6 +80,8 @@ def iciktArray(dataArray, replaceVal=None, type='global'):
             corrArray[a, i] = tempList[i + a * size][0]
             pvalArray[a, i] = tempList[i + a * size][1]
 
+    print(corrArray)
+    print(pvalArray)
     return corrArray, pvalArray
 
 
