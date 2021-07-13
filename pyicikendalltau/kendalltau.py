@@ -87,7 +87,7 @@ def main(args):
     # make options for csv or tab-delimited file
     if args["iciktArray"]:
         args["<2dArray>"] = np.genfromtxt(args["<2dArray>"], delimiter=',')
-        if args["replaceValue"] != "None" or None:
+        if args["replaceValue"] != "None":
             args["replaceValue"] = float(args["replaceValue"])
         iciktArray(args["<2dArray>"], args["<replaceValue>"], args["<type>"])
 
