@@ -4,7 +4,7 @@ Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
 
 
 Usage:
-    kendalltau.py iciktArray <2dArray> [<replaceValue>] <type>
+    kendalltau.py iciktArray <2dArray> <type> [<replaceValue>]
     kendalltau.py -h | --help
 
 Options:
