@@ -10,7 +10,7 @@ Usage:
 Options:
     -h, --help                      Shows this screen.
     --option=<type>                 global or local [default: global].
-    --data-format=<format>          Input file format, available formats: csv, tsv [default:csv].
+    --data-format=<format>          Input file format, available formats: csv, tsv [default: csv].
     --replace=<replaceValue>       value to be replaced with nan [default: None].
 """
 
@@ -97,8 +97,11 @@ def main(args):
         else:
             args["<dataFilePath>"] = np.genfromtxt(args["<dataFilePath>"], delimiter=',')
 
+        if args["--replace"] == 'None':
+            args["--replace"] = None
         if args["--replace"] is not None:
             args["--replace"] = float(args["--replace"])
+
         iciktArray(args["<dataFilePath>"], args["--replace"], args["--option"])
 
 
