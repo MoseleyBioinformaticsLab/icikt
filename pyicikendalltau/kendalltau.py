@@ -4,12 +4,12 @@ Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
 
 
 Usage:
-    kendalltau.py iciktArray (<dataFilePath>) [--option=<type>] [--data-format=<format>] [--replace=<replaceValue>]
+    kendalltau.py <dataFilePath> [--type=<type>] [--data-format=<format>] [--replace=<replaceValue>]
     kendalltau.py -h | --help
 
 Options:
     -h, --help                      Shows this screen.
-    --option=<type>                 Options are global or local [default: global].
+    --type=<type>                 Options are global or local [default: global].
     --data-format=<format>          Input file format, available formats: csv, tsv [default: csv].
     --replace=<replaceValue>        Value to be replaced with nan [default: None].
 """
@@ -89,20 +89,17 @@ def iciktArray(dataArray, replaceVal=None, type='global'):
 
 
 def main(args):
-    # make options for csv or tab-delimited file
-    if args["iciktArray"]:
+    if args["--data-format"] == "tsv":
+        args["<dataFilePath>"] = np.genfromtxt(args["<dataFilePath>"], delimiter='  ')
+    else:
+        args["<dataFilePath>"] = np.genfromtxt(args["<dataFilePath>"], delimiter=',')
 
-        if args["--data-format"] == "tsv":
-            args["<dataFilePath>"] = np.genfromtxt(args["<dataFilePath>"], delimiter='  ')
-        else:
-            args["<dataFilePath>"] = np.genfromtxt(args["<dataFilePath>"], delimiter=',')
+    if args["--replace"] == 'None':
+        args["--replace"] = None
+    if args["--replace"] is not None:
+        args["--replace"] = float(args["--replace"])
 
-        if args["--replace"] == 'None':
-            args["--replace"] = None
-        if args["--replace"] is not None:
-            args["--replace"] = float(args["--replace"])
-
-        iciktArray(args["<dataFilePath>"], args["--replace"], args["--option"])
+    iciktArray(args["<dataFilePath>"], args["--replace"], args["--type"])
 
 
 def smallTest():
