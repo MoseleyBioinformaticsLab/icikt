@@ -9,9 +9,9 @@ Usage:
 
 Options:
     -h, --help                      Shows this screen.
-    --option=<type>                 global or local [default: global].
+    --option=<type>                 Options are global or local [default: global].
     --data-format=<format>          Input file format, available formats: csv, tsv [default: csv].
-    --replace=<replaceValue>       value to be replaced with nan [default: None].
+    --replace=<replaceValue>        Value to be replaced with nan [default: None].
 """
 
 
