@@ -60,6 +60,7 @@ Dependencies
 ~~~~~~~~~~~~
 ``pythonICIKendallTau`` requires the following Python libraries:
     * numpy_ and scipy_ for mathmatical calculations.
+    * docopt_ for a command line interface.
 
 To install dependencies manually:
 
@@ -67,6 +68,7 @@ To install dependencies manually:
 
    pip3 install numpy
    pip3 install scipy
+   pip3 install docopt
 
 
 Basic usage
@@ -124,3 +126,4 @@ DAMAGE.
 .. _git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/
 .. _numpy: http://www.numpy.org/
 .. _scipy: https://scipy.org/scipylib/index.html
+.. _docopt: http://docopt.org/
