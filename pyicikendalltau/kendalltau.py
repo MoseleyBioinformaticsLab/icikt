@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -137,3 +138,4 @@ def bigTest():
 if __name__ == "__main__":
     args = docopt.docopt(__doc__)
     main(args)
+
