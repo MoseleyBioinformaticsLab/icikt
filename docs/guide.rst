@@ -72,6 +72,15 @@ run the following commands:
 
            python3 -m pip install scipy  # On Linux, Mac OS X
            py -3 -m pip install scipy    # On Windows
+           
+   * docopt for a command line interface
+      * To install the docopt Python library run the following:
+    
+        .. code:: bash
+    
+           python3 -m pip install docopt  # On Linux, Mac OS X
+           py -3 -m pip install docopt    # On Windows
+           
 
 
 
