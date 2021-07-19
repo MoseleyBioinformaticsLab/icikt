@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
