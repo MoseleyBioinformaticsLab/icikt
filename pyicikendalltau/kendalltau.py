@@ -4,14 +4,14 @@ Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
 
 
 Usage:
-    kendalltau.py iciktArray (<dataFilePath>) [--option=<type>] [--data-format=<format>] [--replace=<replaceValue>]
+    kendalltau.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<replaceValue>]
     kendalltau.py -h | --help
 
 Options:
     -h, --help                      Shows this screen.
-    --option=<type>                 Options are global or local [default: global].
+    --mode=<type>                 Options are global or local [default: global].
     --data-format=<format>          Input file format, available formats: csv, tsv [default: csv].
-    --replace=<replaceValue>        Value to be replaced with nan [default: None].
+    --replace=<replaceValue>        Value to be replaced with nan.
 """
 
 
@@ -102,7 +102,7 @@ def main(args):
         if args["--replace"] is not None:
             args["--replace"] = float(args["--replace"])
 
-        iciktArray(args["<dataFilePath>"], args["--replace"], args["--option"])
+        iciktArray(args["<dataFilePath>"], args["--replace"], args["--mode"])
 
 
 def smallTest():
@@ -137,5 +137,3 @@ def bigTest():
 if __name__ == "__main__":
     args = docopt.docopt(__doc__)
     main(args)
-
-
