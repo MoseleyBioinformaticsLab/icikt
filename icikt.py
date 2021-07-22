@@ -1,11 +1,11 @@
 """
-Python Information-Content-Informed Kendall Tau Correlation (pyICIKT)
+Python Information-Content-Informed Kendall Tau Correlation (ICIKT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Usage:
-    kendalltau.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<replaceValue>]
-    kendalltau.py -h | --help
+    icikt.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<replaceValue>]
+    icikt.py -h | --help
 
 Options:
     -h, --help                      Shows this screen.
