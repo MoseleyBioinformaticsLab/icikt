@@ -24,12 +24,13 @@ def find_version():
 
 REQUIRES = [
     "numpy >= 1.18.2",
-    "scipy >= 1.4.1"
+    "scipy >= 1.4.1",
+    "docopt >= 0.6.2"
 ]
 
 
 setup(
-    name='pyicikendalltau',
+    name='icikt',
     version=find_version(),
     author='Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley',
     author_email='praneethsbhatt@gmail.com',
