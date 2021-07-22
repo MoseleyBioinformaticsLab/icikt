@@ -19,7 +19,7 @@ Install on Linux, Mac OS X
 
 .. code:: bash
 
-   python3 -m pip install pyicikt
+   python3 -m pip install icikt
 
 
 Install on Windows
@@ -27,7 +27,7 @@ Install on Windows
 
 .. code:: bash
 
-   py -3 -m pip install pyicikt
+   py -3 -m pip install icikt
 
 
 Upgrade on Linux, Mac OS X
@@ -35,7 +35,7 @@ Upgrade on Linux, Mac OS X
 
 .. code:: bash
 
-   python3 -m pip install pyicikt --upgrade
+   python3 -m pip install icikt --upgrade
 
 
 Upgrade on Windows
@@ -43,7 +43,7 @@ Upgrade on Windows
 
 .. code:: bash
 
-   py -3 -m pip install pyicikt --upgrade
+   py -3 -m pip install icikt --upgrade
 
 
 
