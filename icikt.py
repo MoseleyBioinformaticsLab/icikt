@@ -63,14 +63,10 @@ def iciktArray(dataArray, globalNA=None, type='global'):
     :rtype: :py:class:`tuple`
 
     Future Parameters:
-    :param featureNA:
-    :type featureNA:
-    :param sampleNA:
-    :type sampleNA:
-    :param scaleMax:
-    :type scaleMax:
-    :param diagGood:
-    :type diagGood:
+    featureNA
+    sampleNA
+    scaleMax
+    diagGood
 
     """
 
