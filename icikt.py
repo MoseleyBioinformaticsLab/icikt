@@ -4,14 +4,14 @@ Python Information-Content-Informed Kendall Tau Correlation (ICIKT)
 
 
 Usage:
-    icikt.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<replaceValue>]
+    icikt.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<globalNA>]
     icikt.py -h | --help
 
 Options:
     -h, --help                      Shows this screen.
     --mode=<type>                 Options are global or local [default: global].
     --data-format=<format>          Input file format, available formats: csv, tsv [default: csv].
-    --replace=<replaceValue>        Value to be replaced with nan.
+    --replace=<globalNA>        Value to be replaced with nan.
 """
 
 
@@ -49,22 +49,33 @@ def iciKT(x, y, type='global'):
     return [corr, pval]
 
 
-def iciktArray(dataArray, replaceVal=None, type='global'):
+def iciktArray(dataArray, globalNA=None, type='global'):
     """Calls iciKT to calculate ICI-Kendall-Tau between every combination of
-    columns in the input 2d array, dataArray. Also replaces any instance of the replaceVal in the array with np.nan.
+    columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.
 
     :param dataArray: 2d array with columns of data to analyze
     :type dataArray: :class:`numpy.ndarray`
-    :param replaceVal: Optional value to replace with np.nan. Default is None.
-    :type replaceVal: :py:class:`int` or :py:class:`float` or :class:`None`
+    :param globalNA: Optional value to replace with np.nan. Default is None.
+    :type globalNA: :py:class:`float` or :class:`None`
     :param type: type can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
     :type type: :py:class:`str`
     :return: tuple of the correlations and pvalues 2d arrays
     :rtype: :py:class:`tuple`
+
+    Future Parameters:
+    :param featureNA:
+    :type featureNA:
+    :param sampleNA:
+    :type sampleNA:
+    :param scaleMax:
+    :type scaleMax:
+    :param diagGood:
+    :type diagGood:
+
     """
 
-    if replaceVal is not None:
-        dataArray[dataArray == replaceVal] = np.nan
+    if globalNA is not None:
+        dataArray[dataArray == globalNA] = np.nan
 
     size = dataArray.shape[1]
     corrArray, pvalArray = np.zeros([size, size]), np.zeros([size, size])
