@@ -98,6 +98,11 @@ Some of the above functions can be accessed from the command line interface::
     Either the "icikt" command or "python3 -m icikt" can be used to run the command line interface.
 
     > icikt -h
+    
+    Usage:
+        icikt.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<globalNA>]
+        icikt.py -h | --help
+
 
 
 
