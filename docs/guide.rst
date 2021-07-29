@@ -90,5 +90,15 @@ To use the ``pythonICIKendallTau`` package, input a 2d array with n columns each
 an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlations and p-values.
 Each element will correspond to the result of a combination of two columns in the input array.
 
+Using icikt in the command-line interface
+-------------------------------------------
+
+Some of the above functions can be accessed from the command line interface::
+
+    Either the "icikt" command or "python3 -m icikt" can be used to run the command line interface.
+
+    > icikt -h
+
+
 
 .. _pip: https://pip.pypa.io/
