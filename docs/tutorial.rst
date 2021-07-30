@@ -2,8 +2,6 @@ The icikt Tutorial
 ====================
 
 
-Using icikt as a library
---------------------------
 
 Importing icikt package
 ~~~~~~~~~~~~~~~~~~~~~~~~~
