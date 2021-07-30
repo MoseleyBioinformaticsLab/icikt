@@ -12,6 +12,7 @@ Documentation index:
 
    guide
    api
+   tutorial
 
 
 
