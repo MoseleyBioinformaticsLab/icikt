@@ -1,3 +1,20 @@
+The icikt Tutorial
+====================
+
+
+Using icikt as a library
+--------------------------
+
+Importing icikt package
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the :class:`icikt` is installed, it can be imported::
+
+    import icikt
+
+
+
+
 Using icikt in the command-line interface
 -------------------------------------------
 
