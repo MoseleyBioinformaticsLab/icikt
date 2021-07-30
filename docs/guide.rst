@@ -88,36 +88,9 @@ Basic usage
 -----------
 To use the ``pythonICIKendallTau`` package, input a 2d array with n columns each representing
 an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlations and p-values.
-Each element will correspond to the result of a combination of two columns in the input array.
+Each element will correspond to the result of a combination of two columns in the input array. `iciktArray` can also
+be called from the command-line interface given the file path for the data along with several optional parameters(more in tutorial).
 
-Using icikt in the command-line interface
--------------------------------------------
-
-The iciktArray function can be accessed from the command line interface::
-
-    Either the "icikt" command or "python3 -m icikt" can be used to run the command line interface.
-
-    > icikt.py -h
-    
-    Usage:
-        icikt.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<globalNA>]
-        icikt.py -h | --help
-
-Using a csv file with no global replace values::
-
-    icikt.py iciktArray test.csv --data-format=csv
-
-Using a tsv file with no global replace values::
-
-    icikt.py iciktArray test.tsv --data-format=tsv
-
-Using a csv file with 0 as the replace value::
-
-    icikt.py iciktArray test.csv --data-format=csv --replace=0
-    
-Using a csv file in local mode with 0 as the replace value::
-
-    icikt.py iciktArray test.csv --mode=local --data-format=csv --replace=0
 
 
 
