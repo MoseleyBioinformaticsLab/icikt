@@ -42,5 +42,5 @@ setup(
     platforms='any',
     long_description=readme(),
     install_requires=REQUIRES,
-    entry_points={"console_scripts": ["icikt = icikt:main"]},
+    entry_points={"console_scripts": ["icikt = icikt.icikt:main"]},
 )
