@@ -36,10 +36,11 @@ setup(
     author_email='praneethsbhatt@gmail.com',
     description='Python tool to calculate the Kendall Tau correlation coefficient between arrays, while also handling missing values or values which need to be removed.',
     keywords='icikendalltau missing values',
-    license='Modified Clear BSD',
+    license='Modified Clear BSD License',
     url='https://gitlab.cesb.uky.edu/rmflight/pythonICIKendallTau',
     packages=find_packages(),
     platforms='any',
     long_description=readme(),
     install_requires=REQUIRES,
+    entry_points={"console_scripts": ["icikt = icikt.__main__:main"]},
 )
