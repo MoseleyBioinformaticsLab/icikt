@@ -14,6 +14,7 @@ Options:
     --replace=<globalNA>        Value to be replaced with nan.
 """
 
+__version__ = "1.0.0"
 
 import numpy as np
 import scipy.stats as sci
