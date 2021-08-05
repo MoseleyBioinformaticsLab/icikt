@@ -11,7 +11,6 @@ import scipy.stats as sci
 import itertools as it
 import time
 import multiprocessing
-import docopt
 
 
 def iciKT(x, y, type='global'):
