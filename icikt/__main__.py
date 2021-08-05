@@ -15,6 +15,7 @@ Options:
 """
 
 from . import icikt
+import docopt
 
 
 def main():
