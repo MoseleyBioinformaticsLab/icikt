@@ -14,7 +14,7 @@ Options:
     --replace=<globalNA>        Value to be replaced with nan.
 """
 
-import icikt
+from . import icikt
 import docopt
 import numpy as np
 
