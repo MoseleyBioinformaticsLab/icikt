@@ -15,7 +15,7 @@ def readme():
 
 
 def find_version():
-    with open('icikt.py', 'r') as fd:
+    with open('icikt/__init__.py', 'r') as fd:
         version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', fd.read(), re.MULTILINE).group(1)
     if not version:
         raise RuntimeError('Cannot find version information')
@@ -42,5 +42,5 @@ setup(
     platforms='any',
     long_description=readme(),
     install_requires=REQUIRES,
-    entry_points={"console_scripts": ["icikt = icikt.icikt:main"]},
+    entry_points={"console_scripts": ["icikt = icikt.__main__:main"]},
 )
