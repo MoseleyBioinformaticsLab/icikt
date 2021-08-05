@@ -33,7 +33,7 @@ def main():
         if args["--replace"] is not None:
             args["--replace"] = float(args["--replace"])
 
-        iciktArray(args["<dataFilePath>"], args["--replace"], args["--mode"])
+        icikt.iciktArray(args["<dataFilePath>"], args["--replace"], args["--mode"])
 
 
 if __name__ == "__main__":
