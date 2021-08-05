@@ -17,8 +17,8 @@ Options:
 from . import icikt
 
 
-def main(args):
-    # make options for csv or tab-delimited file
+def main():
+    args = docopt.docopt(__doc__)
     if args["iciktArray"]:
 
         if args["--data-format"] == "tsv":
@@ -35,5 +35,4 @@ def main(args):
 
 
 if __name__ == "__main__":
-    args = docopt.docopt(__doc__)
-    main(args)
+    main()
