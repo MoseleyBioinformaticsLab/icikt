@@ -4,8 +4,8 @@ Python Information-Content-Informed Kendall Tau Correlation (ICIKT)
 
 
 Usage:
-    icikt iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<globalNA>]
-    icikt -h | --help
+    icikt.py iciktArray <dataFilePath> [--mode=<type>] [--data-format=<format>] [--replace=<globalNA>]
+    icikt.py -h | --help
 
 Options:
     -h, --help                      Shows this screen.
