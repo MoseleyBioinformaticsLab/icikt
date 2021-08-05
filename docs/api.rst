@@ -1,5 +1,5 @@
 The pyicikendalltau API Reference
 ==================================
 
-.. automodule:: icikt
+.. automodule:: icikt.icikt
     :members:
