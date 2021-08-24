@@ -34,7 +34,7 @@ setup(
     version=find_version(),
     author='Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley',
     author_email='praneethsbhatt@gmail.com',
-    description='Python tool to calculate the Kendall Tau correlation coefficient between arrays, while also handling missing values or values which need to be removed.',
+    description='Python tool to calculate the KendallTau correlation coefficient between arrays.',
     keywords='icikendalltau missing values',
     license='Modified Clear BSD License',
     url='https://gitlab.cesb.uky.edu/rmflight/pythonICIKendallTau',
