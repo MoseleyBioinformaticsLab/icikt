@@ -31,3 +31,6 @@ def bigTest():
     print(pval)
     print(fTime - sTime)
 
+
+smallTest()
+
