@@ -74,9 +74,10 @@ def iciKT(x, y,
         x = x[np.logical_not(matchNA)]
         y = y[np.logical_not(matchNA)]
 
-    naReplace = min(np.fmin(x, y)) - 0.1
-    np.nan_to_num(x, copy=False, nan=naReplace)
-    np.nan_to_num(y, copy=False, nan=naReplace)
+    naReplaceX = np.nanmin(x) - 0.1
+    naReplaceY = np.nanmin(y) - 0.1
+    np.nan_to_num(x, copy=False, nan=naReplaceX)
+    np.nan_to_num(y, copy=False, nan=naReplaceY)
 
     x = np.asarray(x).ravel()
     y = np.asarray(y).ravel()
@@ -86,7 +87,7 @@ def iciKT(x, y,
                          f"size, found x-size {x.size} and y-size {y.size}")
     elif not x.size or not y.size:
         # Return NaN if arrays are empty
-        return np.nan, np.nan
+        return np.nan, np.nan, np.nan
 
     size = x.size
     perm = np.argsort(y)  # sort on y and convert y to dense ranks
@@ -110,7 +111,7 @@ def iciKT(x, y,
     tot = (size * (size - 1)) // 2
 
     if xtie == tot or ytie == tot:
-        return np.nan, np.nan
+        return np.nan, np.nan, np.nan
     # Note that tot = con + dis + (xtie - ntie) + (ytie - ntie) + ntie
     #               = con + dis + xtie + ytie - ntie
     conMinusDis = tot - xtie - ytie + ntie - 2 * dis
@@ -171,7 +172,6 @@ def iciktArray(dataArray,
     sampleNA
 
     """
-    print("set globalNA default back to None when done with testing")
     if globalNA is not None:
         dataArray[dataArray == globalNA] = np.nan
 
@@ -185,7 +185,6 @@ def iciktArray(dataArray,
     # produces every combination of columns in the array
     product = it.product(np.hsplit(dataArray, size), np.hsplit(dataArray, size))
     product = np.array([*product])
-    print(product.shape)
 
     iPC = it.combinations(range(size), 2)
     pairwiseComparisons = np.ndarray(shape=(2, (size*(size-1))//2))
@@ -201,7 +200,6 @@ def iciktArray(dataArray,
 
     pairwiseComparisons = pairwiseComparisons.astype(int)
 
-    print(pairwiseComparisons.shape)
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
     with multiprocessing.Pool() as pool:
         tempList = pool.starmap(iciKT, ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
@@ -211,7 +209,7 @@ def iciktArray(dataArray,
     for i, (corr, pval, taumax) in zip(pairwiseComparisons.T, tempList):
         corrArray[i[0], i[1]] = corrArray[i[1], i[0]] = corr
         pvalArray[i[0], i[1]] = pvalArray[i[1], i[0]] = pval
-        tauMaxArray[i[0], [1]] = tauMaxArray[i[1], i[0]] = taumax
+        tauMaxArray[i[0], i[1]] = tauMaxArray[i[1], i[0]] = taumax
 
     if scaleMax:
         maxCor = np.nanmax(tauMaxArray)
@@ -223,8 +221,8 @@ def iciktArray(dataArray,
         nGood = np.sum(excludeLoc, axis=0)
         np.fill_diagonal(outArray, nGood / max(nGood))
 
-    # print(outArray)
-    # print(corrArray)
-    # print(pvalArray)
-    # print(tauMaxArray)
+    print(outArray)
+    print(corrArray)
+    print(pvalArray)
+    print(tauMaxArray)
     return outArray, corrArray, pvalArray, tauMaxArray

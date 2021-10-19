@@ -93,8 +93,8 @@ def iciktArray(dataArray, globalNA=None, perspective='global'):
             corrArray[a, i] = tempList[i + a * size][0]
             pvalArray[a, i] = tempList[i + a * size][1]
 
-    # print(corrArray)
-    # print(pvalArray)
+    print(corrArray)
+    print(pvalArray)
     return corrArray, pvalArray
 
 
