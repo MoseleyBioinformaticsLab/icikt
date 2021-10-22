@@ -115,7 +115,7 @@ def iciKT(x, y,
     # Note that tot = con + dis + (xtie - ntie) + (ytie - ntie) + ntie
     #               = con + dis + xtie + ytie - ntie
     conMinusDis = tot - xtie - ytie + ntie - 2 * dis
-    tau = conMinusDis / np.sqrt(tot - xtie) / np.sqrt(tot - ytie)
+    tau = conMinusDis / np.sqrt((tot - xtie)*(tot - ytie))
     conPlusDis = tot - xtie - ytie + ntie
     tauMax = conPlusDis / np.sqrt((tot - xtie) * (tot - ytie))
 
@@ -142,6 +142,8 @@ def iciKT(x, y,
     else:
         raise ValueError(f"Unknown method {method} specified.  Use 'auto', "
                          "'exact' or 'asymptotic'.")
+
+    print(x, y, cnt, size, dis, obs, xtie, ytie, ntie, tot, conMinusDis, tau, pvalue, m, var, zVal)
 
     return tau, pvalue, tauMax
 
@@ -183,8 +185,8 @@ def iciktArray(dataArray,
     corrArray, pvalArray, tauMaxArray = np.zeros([size, size]), np.zeros([size, size]), np.zeros([size, size])
 
     # produces every combination of columns in the array
-    product = it.product(np.hsplit(dataArray, size), np.hsplit(dataArray, size))
-    product = np.array([*product])
+    # product = it.product(np.hsplit(dataArray, size), np.hsplit(dataArray, size))
+    # product = np.array([*product])
 
     iPC = it.combinations(range(size), 2)
     pairwiseComparisons = np.ndarray(shape=(2, (size*(size-1))//2))
@@ -222,7 +224,7 @@ def iciktArray(dataArray,
         np.fill_diagonal(outArray, nGood / max(nGood))
 
     print(outArray)
-    print(corrArray)
-    print(pvalArray)
-    print(tauMaxArray)
+    # print(corrArray)
+    # print(pvalArray)
+    # print(tauMaxArray)
     return outArray, corrArray, pvalArray, tauMaxArray
