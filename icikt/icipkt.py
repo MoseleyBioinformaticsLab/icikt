@@ -74,6 +74,9 @@ def iciKT(x, y,
         x = x[np.logical_not(matchNA)]
         y = y[np.logical_not(matchNA)]
 
+    x[x == 0] = np.nan
+    y[y == 0] = np.nan
+
     naReplaceX = np.nanmin(x) - 0.1
     naReplaceY = np.nanmin(y) - 0.1
     np.nan_to_num(x, copy=False, nan=naReplaceX)
@@ -100,6 +103,7 @@ def iciKT(x, y,
     x = np.r_[True, x[1:] != x[:-1]].cumsum(dtype=np.intp)
 
     dis = kendall_dis(x, y)  # discordant pairs
+    print(dis)
 
     obs = np.r_[True, (x[1:] != x[:-1]) | (y[1:] != y[:-1]), True]
     cnt = np.diff(np.nonzero(obs)[0]).astype('int64', copy=False)
@@ -143,8 +147,8 @@ def iciKT(x, y,
         raise ValueError(f"Unknown method {method} specified.  Use 'auto', "
                          "'exact' or 'asymptotic'.")
 
-    print(x, y, cnt, size, dis, obs, xtie, ytie, ntie, tot, conMinusDis, tau, pvalue, m, var, zVal)
-
+    # print(x, y, cnt, size, dis, obs, xtie, ytie, ntie, tot, conMinusDis, tau, pvalue, m, var, zVal)
+    print(tau, pvalue, tauMax, dis)
     return tau, pvalue, tauMax
 
 
@@ -223,7 +227,7 @@ def iciktArray(dataArray,
         nGood = np.sum(excludeLoc, axis=0)
         np.fill_diagonal(outArray, nGood / max(nGood))
 
-    print(outArray)
+    # print(outArray)
     # print(corrArray)
     # print(pvalArray)
     # print(tauMaxArray)
