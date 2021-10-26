@@ -68,8 +68,6 @@ def iciKT(x, y, perspective='global'):
         x = x[np.logical_not(matchNA)]
         y = y[np.logical_not(matchNA)]
 
-    x[x == 0] = np.nan
-    y[y == 0] = np.nan
 
     naReplaceX = np.nanmin(x) - 0.1
     naReplaceY = np.nanmin(y) - 0.1
