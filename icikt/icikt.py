@@ -161,7 +161,7 @@ def iciktArray(dataArray,
     :type scaleMax: :py:class:`bool`
     :param diagGood: should the diagonal entries reflect how many entries in the sample were "good"?
     :type diagGood: :py:class:`bool`
-    :return: tuple of the correlations and pvalues 2d arrays
+    :return: tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays
     :rtype: :py:class:`tuple`
 
     Future Parameters:
