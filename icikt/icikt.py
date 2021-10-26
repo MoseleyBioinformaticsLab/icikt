@@ -158,9 +158,9 @@ def iciktArray(dataArray,
     :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
     :type perspective: :py:class:`str`
     :param scaleMax: should everything be scaled compared to the maximum correlation?
-    :type scaleMax: :class:'Bool'
+    :type scaleMax: :py:class:`bool`
     :param diagGood: should the diagonal entries reflect how many entries in the sample were "good"?
-    :type diagGood: :class:'Bool'
+    :type diagGood: :py:class:`bool`
     :return: tuple of the correlations and pvalues 2d arrays
     :rtype: :py:class:`tuple`
 
