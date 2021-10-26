@@ -3,3 +3,4 @@ include requirements.txt
 include docs/Makefile
 recursive-include docs *.rst *.txt *.py *.png
 recursive-include icikt *.py *.pyx
+recursive-include icikt kendall_dis.pyx
