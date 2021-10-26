@@ -12,10 +12,7 @@ from scipy.stats import mstats_basic
 from scipy.stats import distributions
 
 import itertools as it
-import time
 import multiprocessing
-import warnings
-from collections import namedtuple
 
 import pyximport
 
