@@ -23,10 +23,7 @@ pyximport.install()
 from kendall_dis import kendall_dis
 
 
-def iciKT(x, y,
-          perspective='global',
-          scaleMax=True,
-          diagGood=True):
+def iciKT(x, y, perspective='global'):
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
 
     :param x: First array of data
@@ -103,7 +100,6 @@ def iciKT(x, y,
     x = np.r_[True, x[1:] != x[:-1]].cumsum(dtype=np.intp)
 
     dis = kendall_dis(x, y)  # discordant pairs
-    print(dis)
 
     obs = np.r_[True, (x[1:] != x[:-1]) | (y[1:] != y[:-1]), True]
     cnt = np.diff(np.nonzero(obs)[0]).astype('int64', copy=False)
@@ -147,8 +143,6 @@ def iciKT(x, y,
         raise ValueError(f"Unknown method {method} specified.  Use 'auto', "
                          "'exact' or 'asymptotic'.")
 
-    # print(x, y, cnt, size, dis, obs, xtie, ytie, ntie, tot, conMinusDis, tau, pvalue, m, var, zVal)
-    print(tau, pvalue, tauMax, dis)
     return tau, pvalue, tauMax
 
 
@@ -205,7 +199,7 @@ def iciktArray(dataArray,
         pairwiseComparisons = np.concatenate((pairwiseComparisons, extraComparisons), axis=1)
 
     pairwiseComparisons = pairwiseComparisons.astype(int)
-
+    
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
     with multiprocessing.Pool() as pool:
         tempList = pool.starmap(iciKT, ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
@@ -227,8 +221,4 @@ def iciktArray(dataArray,
         nGood = np.sum(excludeLoc, axis=0)
         np.fill_diagonal(outArray, nGood / max(nGood))
 
-    # print(outArray)
-    # print(corrArray)
-    # print(pvalArray)
-    # print(tauMaxArray)
     return outArray, corrArray, pvalArray, tauMaxArray
