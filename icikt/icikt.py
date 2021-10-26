@@ -74,8 +74,8 @@ def iciKT(x, y, perspective='global'):
     np.nan_to_num(x, copy=False, nan=naReplaceX)
     np.nan_to_num(y, copy=False, nan=naReplaceY)
 
-    x = np.asarray(x).ravel()
-    y = np.asarray(y).ravel()
+    # x = np.asarray(x).ravel()
+    # y = np.asarray(y).ravel()
 
     if x.size != y.size:
         raise ValueError("All inputs to `kendalltau` must be of the same "
