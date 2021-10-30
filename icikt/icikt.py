@@ -68,14 +68,10 @@ def iciKT(x, y, perspective='global'):
         x = x[np.logical_not(matchNA)]
         y = y[np.logical_not(matchNA)]
 
-
     naReplaceX = np.nanmin(x) - 0.1
     naReplaceY = np.nanmin(y) - 0.1
     np.nan_to_num(x, copy=False, nan=naReplaceX)
     np.nan_to_num(y, copy=False, nan=naReplaceY)
-
-    # x = np.asarray(x).ravel()
-    # y = np.asarray(y).ravel()
 
     if x.size != y.size:
         raise ValueError("All inputs to `kendalltau` must be of the same "
