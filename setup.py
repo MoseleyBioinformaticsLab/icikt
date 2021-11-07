@@ -25,7 +25,8 @@ def find_version():
 REQUIRES = [
     "numpy >= 1.18.2",
     "scipy >= 1.4.1",
-    "docopt >= 0.6.2"
+    "docopt >= 0.6.2",
+    "cython >= 0.29.24"
 ]
 
 
