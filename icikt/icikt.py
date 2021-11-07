@@ -17,7 +17,7 @@ import multiprocessing
 import pyximport
 
 pyximport.install()
-from kendall_dis import kendall_dis
+from kendall_dis import _kendall_dis
 
 
 def iciKT(x, y, perspective='global'):
