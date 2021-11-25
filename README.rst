@@ -1,16 +1,16 @@
-pythonICIKendallTau
-=====================
+icikt
+=====
 
 Description
 --------------
-The ``pythonICIKendallTau`` package provides a Python tool to calculate an information-content-informed 
+The ``icikt`` package provides a Python tool to calculate an information-content-informed 
 Kendall Tau correlation coefficient between arrays, while also handling missing
 values or values which need to be removed.
 
 
 Installation
 --------------
-The ``pythonICIKendallTau`` package runs under Python 3.4+. Use pip_ to install.
+The ``icikt`` package runs under Python 3.4+. Use pip_ to install.
 Starting with Python 3.4, pip_ is included by default.
 
 
@@ -58,7 +58,7 @@ Make sure you have git_ installed:
 
 Dependencies
 ~~~~~~~~~~~~
-``pythonICIKendallTau`` requires the following Python libraries:
+``icikt`` requires the following Python libraries:
     * numpy_ and scipy_ for mathmatical calculations.
     * docopt_ for a command line interface.
 
@@ -74,7 +74,7 @@ To install dependencies manually:
 Basic usage
 -----------
 
-To use the ``pythonICIKendallTau`` package, input a 2d array with n columns each representing
+To use the ``icikt`` package, input a 2d array with n columns each representing
 an array of data for a variable. The `iciktArray` will return two n x n 2d arrays for correlations and p-values.
 Each element will correspond to the result of a combination of two columns in the input array. iciktArray can also
 be called from the command-line interface given the file path for the data along with several optional parameters(more in docs/tutorial).
