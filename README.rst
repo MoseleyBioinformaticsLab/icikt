@@ -7,6 +7,7 @@ The ``icikt`` package provides a Python tool to calculate an information-content
 Kendall Tau correlation coefficient between arrays, while also handling missing
 values or values which need to be removed.
 
+Full API documentation, user guide, and tutorial can be found on readthedocs_
 
 Installation
 --------------
@@ -123,6 +124,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGE.
 
 
+.. _readthedocs https://icikt.readthedocs.io/en/latest/
 .. _pip: https://pip.pypa.io/
 .. _git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/
 .. _numpy: http://www.numpy.org/
