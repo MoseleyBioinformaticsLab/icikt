@@ -17,7 +17,7 @@ import multiprocessing
 import pyximport
 
 pyximport.install()
-from kendall_dis import _kendall_dis
+import _kendall_dis
 
 
 def iciKT(x, y, perspective='global'):
@@ -90,7 +90,7 @@ def iciKT(x, y, perspective='global'):
     x, y = x[perm], y[perm]
     x = np.r_[True, x[1:] != x[:-1]].cumsum(dtype=np.intp)
 
-    dis = kendall_dis(x, y)  # discordant pairs
+    dis = _kendall_dis.kendall_dis(x, y)  # discordant pairs
 
     obs = np.r_[True, (x[1:] != x[:-1]) | (y[1:] != y[:-1]), True]
     cnt = np.diff(np.nonzero(obs)[0]).astype('int64', copy=False)
