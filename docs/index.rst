@@ -1,5 +1,5 @@
-Welcome to pythonICIKendallTau's documentation!
-===============================================
+Welcome to icikt's documentation!
+=================================
 
 .. include:: ../README.rst
 

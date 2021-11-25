@@ -3,14 +3,14 @@ User Guide
 
 Description
 -----------
-The ``pythonICIKendallTau`` package handles missing data before calculating a correlation
+The ``icikt`` package handles missing data before calculating a correlation
 between datasets for variables. The missing values are treated as information from a 
 left-centered distribution perspective and are included in the calculation of concordant
 and discordant pairs used in calculating the correlation value.
 
 Installation
 --------------
-The ``pythonICIKendallTau`` package runs under Python 3.4+. Use pip_ to install.
+The ``icikt`` package runs under Python 3.4+. Use pip_ to install.
 Starting with Python 3.4, pip_ is included by default.
 
 
@@ -53,7 +53,7 @@ Get the source code
 
 Dependencies
 ------------
-The ``pythonICIKendallTau`` package depends on several Python libraries. The ``pip`` command
+The ``icikt`` package depends on several Python libraries. The ``pip`` command
 will install all dependencies automatically, but if you wish to install them manually,
 run the following commands:
 
@@ -86,7 +86,7 @@ run the following commands:
 
 Basic usage
 -----------
-To use the ``pythonICIKendallTau`` package, input a 2d array with n columns each representing
+To use the ``icikt`` package, input a 2d array with n columns each representing
 an array of data for a variable. The `iciktArray` will return 4 n x n 2d arrays for output correlations, raw correlations p-values, and maxTaus.
 Each element will correspond to the result of a combination of two columns in the input array. `iciktArray` can also
 be called from the command-line interface given the file path for the data along with several optional parameters(more in tutorial).

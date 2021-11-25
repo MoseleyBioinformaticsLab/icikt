@@ -18,7 +18,7 @@ autodoc_mock_imports = ['kendall_dis']
 
 # -- Project information -----------------------------------------------------
 
-project = 'pythonICIKendallTau'
+project = 'icikt'
 copyright = '2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 author = 'Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 

@@ -6,7 +6,7 @@ The icikt Tutorial
 Importing icikt package
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the `icikt` is installed, it can be imported::
+If the ``icikt`` package is installed, it can be imported::
 
     import icikt
 

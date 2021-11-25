@@ -1,7 +1,7 @@
 """
 Python Information-Content-Informed Kendall Tau Correlation (ICIKT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The pythonICIKendallTau package provides a Python tool to calculate an
+The icikt package provides a Python tool to calculate an
 information-content-informed Kendall Tau correlation coefficient between
 arrays, while also handling missing values or values which need to be removed.
 """
