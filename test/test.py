@@ -7,11 +7,10 @@ sys.path.insert(1, '/mlab/data/psbhatt/projects/pythonICIKendallTau/icikt')
 import icikt
 
 
-def iciKTTest():
-    largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/pythonICIKendallTau/test/bigTest2.tab.csv', delimiter="\t")
+def iciKTTest(array):
 
-    x = largeArray[:, 0]
-    y = largeArray[:, 1]
+    x = array[:, 0]
+    y = array[:, 1]
 
     # preserving the nan replacement done in iciktArray
     x[x == 0] = np.nan
@@ -29,17 +28,16 @@ def iciKTTest():
     print("Runtime: ", fTime - sTime)
 
 
-def iciktArrayTest():
-    largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/pythonICIKendallTau/test/bigTest2.tab.csv', delimiter="\t")
+def iciktArrayTest(array):
 
     sTime = time.time()
-    out, corr, pVal, tMax = icikt.iciktArray(largeArray)
+    out, corr, pVal, tMax = icikt.iciktArray(array)
     fTime = time.time()
 
     print(out, corr, pVal, tMax, sep="\n")
     print("Runtime: ", fTime - sTime)
 
 
-
-# iciKTTest()
-iciktArrayTest()
+largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/pythonICIKendallTau/test/bigTest2.tab.csv', delimiter="\t")
+# iciKTTest(largeArray)
+iciktArrayTest(largeArray)
