@@ -25,7 +25,7 @@ def iciKTTest():
     corr, pVal, tMax = icikt.iciKT(x, y)
     fTime = time.time()
 
-    print(*(corr, pVal, tMax), sep="\n")
+    print(corr, pVal, tMax, sep="\n")
     print("Runtime: ", fTime - sTime)
 
 
@@ -36,5 +36,10 @@ def iciktArrayTest():
     out, corr, pVal, tMax = icikt.iciktArray(largeArray)
     fTime = time.time()
 
-    print(*(out, corr, pVal, tMax), sep="\n")
+    print(out, corr, pVal, tMax, sep="\n")
     print("Runtime: ", fTime - sTime)
+
+
+
+# iciKTTest()
+iciktArrayTest()
