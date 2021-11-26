@@ -1,36 +1,37 @@
 import numpy as np
-import icikt
 import time
 
-
-def smallTest():
-
-    x = np.array([np.nan, 5, 3, np.nan, np.nan, 2])
-    y = np.array([4, 0, 17, 8, np.nan, 6])
-    z = np.array([6, 10, np.nan, 3, 9, 14])
-    xyz = np.column_stack((x, y, z))
-
-    sTime = time.time()
-    corr, pval = iciktArray(xyz, replaceVal=0)
-    fTime = time.time()
-
-    print(corr)
-    print(pval)
-    print(fTime - sTime)
+import sys
+# inserting icikt path
+sys.path.insert(1, '/mlab/data/psbhatt/projects/pythonICIKendallTau/icikt')
+import icikt
 
 
-def bigTest():
+def iciKTTest():
+    largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/pythonICIKendallTau/test/bigTest2.tab.csv', delimiter="\t")
 
-    largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/pythonICIKendallTau/test/bigTest.csv', delimiter=",")
+    x = largeArray[:, 0]
+    y = largeArray[:, 1]
+    x[x == 0] = np.nan
+    y[y == 0] = np.nan
+    naReplaceX = np.nanmin(x) - 0.1
+    naReplaceY = np.nanmin(y) - 0.1
+    np.nan_to_num(x, copy=False, nan=naReplaceX)
 
     sTime = time.time()
-    corr, pval = iciktArray(largeArray)
+    corr, pVal, tMax = icikt.iciKT(x, y)
     fTime = time.time()
 
-    print(corr)
-    print(pval)
-    print(fTime - sTime)
+    print(*(corr, pVal, tMax), sep="\n")
+    print("Runtime: ", fTime - sTime)
 
 
-smallTest()
+def iciktArrayTest():
+    largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/pythonICIKendallTau/test/bigTest2.tab.csv', delimiter="\t")
 
+    sTime = time.time()
+    out, corr, pVal, tMax = icikt.iciktArray(largeArray)
+    fTime = time.time()
+
+    print(*(out, corr, pVal, tMax), sep="\n")
+    print("Runtime: ", fTime - sTime)
