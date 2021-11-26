@@ -12,11 +12,14 @@ def iciKTTest():
 
     x = largeArray[:, 0]
     y = largeArray[:, 1]
+
+    # preserving the nan replacement done in iciktArray
     x[x == 0] = np.nan
     y[y == 0] = np.nan
     naReplaceX = np.nanmin(x) - 0.1
     naReplaceY = np.nanmin(y) - 0.1
     np.nan_to_num(x, copy=False, nan=naReplaceX)
+    np.nan_to_num(y, copy=False, nan=naReplaceY)
 
     sTime = time.time()
     corr, pVal, tMax = icikt.iciKT(x, y)
