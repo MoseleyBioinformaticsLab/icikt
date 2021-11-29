@@ -41,7 +41,7 @@ jobs:
         import icikt
         import time
         
-        largeArray = np.genfromtxt("test/bigTest.csv", sep = ",")
+        largeArray = np.genfromtxt("test/bigTest.csv", delimiter = ",")
         
         sTime = time.time()
         corr, pval, tmax = icikt.icikt(largeArray[:, 0], largeArray[:, 1])
