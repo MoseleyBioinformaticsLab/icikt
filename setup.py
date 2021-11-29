@@ -3,6 +3,7 @@ import sys
 import re
 from setuptools import setup, find_packages, Extension
 import Cython.Build
+import numpy
 
 if sys.argv[-1] == 'publish':
     os.system('python3 setup.py sdist')
