@@ -1,7 +1,8 @@
 import os
 import sys
 import re
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
+import Cython.Build
 
 if sys.argv[-1] == 'publish':
     os.system('python3 setup.py sdist')
@@ -29,6 +30,9 @@ REQUIRES = [
     "cython >= 0.29.24"
 ]
 
+EXTENSIONS = [
+        Extension("icikt._kendall_dis", sources=["icikt/_kendall_dis.pyx"])
+]
 
 setup(
     name='icikt',
@@ -42,6 +46,8 @@ setup(
     packages=find_packages(),
     platforms='any',
     long_description=readme(),
+    cmdclass={'build_ext': Cython.Build.build_ext},
     install_requires=REQUIRES,
+    ext_modules=EXTENSIONS,
     entry_points={"console_scripts": ["icikt = icikt.__main__:main"]},
 )
