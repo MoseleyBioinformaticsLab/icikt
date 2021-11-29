@@ -6,7 +6,8 @@ on:
 
 name: python-install-run
 
-jobs: python-install-run:
+jobs: 
+  python-install-run:
     name: Install and run a simple test
     runs-on: ubuntu-latest
     steps:
