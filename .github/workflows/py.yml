@@ -43,7 +43,7 @@ jobs:
         
         largeArray = np.genfromtxt("test/bigTest.csv", delimiter = ",")
         
-        sTime = time.time()
+        stime = time.time()
         corr, pval, tmax = icikt.icikt(largeArray[:, 0], largeArray[:, 1])
         ftime = time.time()
         print(corr, pval, tmax)
