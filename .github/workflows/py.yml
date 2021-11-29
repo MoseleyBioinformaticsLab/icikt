@@ -32,6 +32,26 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Install the package
       run: |
-        pytest
+        pip install icikt/
+    - name: Run Main Tests
+      run: |
+        import numpy as np
+        import icikt
+        import time
+        
+        largeArray = np.genfromtxt("test/bigTest.csv", sep = ",")
+        
+        sTime = time.time()
+        corr, pval, tmax = icikt.icikt(largeArray[:, 0], largeArray[:, 1])
+        ftime = time.time()
+        print(corr, pval, tmax)
+        print("Runtime: ", ftime - stime)
+        
+        stime = time.time()
+        out, corr, pval, tmax = icikt.iciktArray(largeArray)
+        ftime = time.time()
+        print(corr[0:5, 0:5], pval[0:5, 0:5], tmax[0:5, 0:5])
+        print("Runtime: ", ftime - stime)
+      shell: python
