@@ -31,7 +31,7 @@ REQUIRES = [
 ]
 
 EXTENSIONS = [
-        Extension("icikt._kendall_dis", sources=["icikt/_kendall_dis.pyx"])
+        Extension("icikt._kendall_dis", sources=["icikt/_kendall_dis.pyx"], include_dirs=[numpy.get_include()])
 ]
 
 setup(
