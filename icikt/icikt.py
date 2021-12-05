@@ -16,11 +16,10 @@ import multiprocessing
 
 import pyximport
 
-pyximport.install()
-import _kendall_dis
+from . import _kendall_dis
 
 
-def iciKT(x, y, perspective='global'):
+def icikt(x, y, perspective='global'):
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
 
     :param x: First array of data
@@ -189,7 +188,7 @@ def iciktArray(dataArray,
     
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
     with multiprocessing.Pool() as pool:
-        tempList = pool.starmap(iciKT, ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
+        tempList = pool.starmap(icikt, ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
 
     # separates+stores the correlation, pvalue, and tauMax data from every combination at the correct
     # location in the output arrays
