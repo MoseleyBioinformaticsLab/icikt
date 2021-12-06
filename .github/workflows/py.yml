@@ -55,20 +55,20 @@ jobs:
         print(corr[0:5, 0:5], pval[0:5, 0:5], tmax[0:5, 0:5])
         
         np.random.seed(1234)
-	setup_code = '''
-	import icikt
-	import scipy.stats
-	import numpy as np
-	np.random.seed(1234)
-	largeArray = np.random.randn(50000, 2)'''
+        setup_code = '''
+        import icikt
+        import scipy.stats
+        import numpy as np
+        np.random.seed(1234)
+        largeArray = np.random.randn(50000, 2)'''
 
-	icikt_code = '''
-	corr, pval, tmax = icikt.icikt(largeArray[:, 0], largeArray[:, 1])'''
+        icikt_code = '''
+        corr, pval, tmax = icikt.icikt(largeArray[:, 0], largeArray[:, 1])'''
+        
+        print (timeit.timeit(setup = setup_code, stmt = icikt_code, number = 500) / 500)
 
-	print (timeit.timeit(setup = setup_code, stmt = icikt_code, number = 500) / 500)
+        scipy_code = '''
+        corr, pval = scipy.stats.kendalltau(largeArray[:, 0], largeArray[:, 1])'''
 
-	scipy_code = '''
-	corr, pval = scipy.stats.kendalltau(largeArray[:, 0], largeArray[:, 1])'''
-
-	print(timeit.timeit(setup = setup_code, stmt = scipy_code, number = 500) / 500)
-        shell: python
+        print(timeit.timeit(setup = setup_code, stmt = scipy_code, number = 500) / 500)
+      shell: python
