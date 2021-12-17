@@ -6,9 +6,11 @@ Python Information-Content-Informed Kendall Tau Correlation (ICIKT)
 Usage:
     icikt.py iciktArray <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--mode=<perspective>] [--scale=<scaleMax>] [--diag=<diagGood>]
     icikt.py -h | --help
+    icikt.py --version
 
 Options:
-    -h, --help                      Shows this screen.
+    -h, --help                  Shows this screen.
+    --version                   Display current version of icikt
     --data-format=<format>      Input file format, available formats: csv, tsv [default: csv].
     --replace=<globalNA>        Value to be replaced with nan [default: 0].
     --mode=<perspective>        Options are global or local [default: global].
@@ -18,12 +20,15 @@ Options:
 """
 
 from . import icikt
+from . import __version__ as ver
 import docopt
 import numpy as np
 
 
 def main():
     args = docopt.docopt(__doc__)
+    if args["--version"]:
+        print(ver)
     if args["iciktArray"]:
 
         if args["--data-format"] == "tsv":
