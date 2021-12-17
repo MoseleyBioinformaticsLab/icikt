@@ -62,6 +62,7 @@ Dependencies
 ``icikt`` requires the following Python libraries:
     * numpy_ and scipy_ for mathmatical calculations.
     * docopt_ for a command line interface.
+    * Cython_ for optimized performance.
 
 To install dependencies manually:
 
@@ -70,6 +71,7 @@ To install dependencies manually:
    pip3 install numpy
    pip3 install scipy
    pip3 install docopt
+   pip3 install cython
 
 
 Basic usage
@@ -130,3 +132,4 @@ DAMAGE.
 .. _numpy: http://www.numpy.org/
 .. _scipy: https://scipy.org/scipylib/index.html
 .. _docopt: http://docopt.org/
+.. _Cython: https://cython.org/
