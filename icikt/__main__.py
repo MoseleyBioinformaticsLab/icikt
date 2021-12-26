@@ -4,7 +4,7 @@ Python Information-Content-Informed Kendall Tau Correlation (ICIKT)
 
 
 Usage:
-    icikt.py iciktArray <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--mode=<perspective>] [--scale=<scaleMax>] [--diag=<diagGood>]
+    icikt.py iciktArray <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--mode=<perspective>] [--scale=<scaleMax>] [--diag=<diagGood>] [--output=<outname>]
     icikt.py -h | --help
     icikt.py --version
 
@@ -16,10 +16,11 @@ Options:
     --mode=<perspective>        Options are global or local [default: global].
     --scale=<scaleMax>          Should everything be scaled compared to the maximum correlation [default: TRUE]?
     --diag=<diagGood>           Should the diagonal entries reflect how many entries in the sample were "good" [default:TRUE]?
+    --output=<outname>          If you want to save results as a csv, specify the path/to/save/fileID
 
 """
 
-from . import icikt
+from . import iciktArray
 from . import __version__ as ver
 import docopt
 import numpy as np
@@ -41,7 +42,16 @@ def main():
         if args["--replace"] is not None:
             args["--replace"] = float(args["--replace"])
 
-        icikt.iciktArray(args["<dataFilePath>"], args["--replace"], args["--mode"], args["--scale"], args["--diag"])
+        out, corr, pMax, tMax = iciktArray(args["<dataFilePath>"], args["--replace"], args["--mode"], args["--scale"], args["--diag"])
+        if args["--output"] is not None:
+            np.savetxt(args["--output"]+'outArray.csv', out, delimiter=',')
+            np.savetxt(args["--output"]+'corrArray.csv', corr, delimiter=',')
+            np.savetxt(args["--output"]+'pMaxArray.csv', pMax, delimiter=',')
+            np.savetxt(args["--output"]+'tMaxArray.csv', tMax, delimiter=',')
+        else:
+            print(out, corr, pMax, tMax, sep='\n\n')
+
+
 
 
 if __name__ == "__main__":

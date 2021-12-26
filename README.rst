@@ -82,6 +82,23 @@ an array of data for a variable. The `iciktArray` will return two n x n 2d array
 Each element will correspond to the result of a combination of two columns in the input array. iciktArray can also
 be called from the command-line interface given the file path for the data along with several optional parameters(more in docs/tutorial).
 
+Running through command line :
+.. code:: bash
+
+        icikt iciktArray /path/to/file.tsv --data-format=tsv --replace=None
+
+Running through python script :
+.. code:: python
+
+        import numpy as np
+        import icikt
+
+        dataArray = np.genfromtxt('/path/to/file.tsv', delimiter="\t")
+        out, corr, pVal, tMax = icikt.iciktArray(dataArray)
+
+        
+
+
 License
 -------
 

@@ -38,6 +38,6 @@ def iciktArrayTest(array):
     print("Runtime: ", fTime - sTime)
 
 
-largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/pythonICIKendallTau/test/bigTest2.tab.csv', delimiter="\t")
+largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/icikt/test/bigTest.csv', delimiter=",")
 # iciKTTest(largeArray)
 iciktArrayTest(largeArray)
