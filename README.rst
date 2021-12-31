@@ -83,18 +83,26 @@ Each element will correspond to the result of a combination of two columns in th
 be called from the command-line interface given the file path for the data along with several optional parameters(more in docs/tutorial).
 
 Running through command line :
+
 .. code:: bash
 
         icikt iciktArray /path/to/file.tsv --data-format=tsv --replace=None
 
 Running through python script :
+
 .. code:: python
 
         import numpy as np
         import icikt
 
         dataArray = np.genfromtxt('/path/to/file.tsv', delimiter="\t")
-        out, corr, pVal, tMax = icikt.iciktArray(dataArray)
+        # or with random values
+        dataArray = numpy.random.randn(100, 2)
+
+
+        corr, pVal, tMax = icikt.icikt(dataArray[:,0], dataArray[:,1])
+
+        scaled, corrRaw, pVals, tauMax = icikt.iciktArray(dataArray)
 
         
 
