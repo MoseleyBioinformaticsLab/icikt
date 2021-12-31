@@ -54,13 +54,13 @@ Import numpy and icikt:
 
 Generate a numpy array from your data file:
 
-..code:: python
+.. code:: python
 
         dataArray = np.genfromtxt('path/to/file.tsv', delimiter='\t')
 
 Call iciktArray on your dataArray, saving outputs to separate variables:
 
-..code:: python
+.. code:: python
 
         out, corr, pVal, tMax = icikt.iciktArray(dataArray)
         print(out,corr,pVal,tMax,sep='\n\n')

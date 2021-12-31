@@ -99,9 +99,10 @@ Running through python script :
         # or with random values
         dataArray = numpy.random.randn(100, 2)
 
-
+        # running just 2 arrays with icikt
         corr, pVal, tMax = icikt.icikt(dataArray[:,0], dataArray[:,1])
-
+        
+        # running all combinations with iciktArray
         scaled, corrRaw, pVals, tauMax = icikt.iciktArray(dataArray)
 
         
