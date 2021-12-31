@@ -42,14 +42,14 @@ def main():
         if args["--replace"] is not None:
             args["--replace"] = float(args["--replace"])
 
-        out, corr, pMax, tMax = iciktArray(args["<dataFilePath>"], args["--replace"], args["--mode"], args["--scale"], args["--diag"])
+        out, corr, pVal, tMax = iciktArray(args["<dataFilePath>"], args["--replace"], args["--mode"], args["--scale"], args["--diag"])
         if args["--output"] is not None:
             np.savetxt(args["--output"]+'outArray.csv', out, delimiter=',')
             np.savetxt(args["--output"]+'corrArray.csv', corr, delimiter=',')
-            np.savetxt(args["--output"]+'pMaxArray.csv', pMax, delimiter=',')
+            np.savetxt(args["--output"]+'pValArray.csv', pVal, delimiter=',')
             np.savetxt(args["--output"]+'tMaxArray.csv', tMax, delimiter=',')
         else:
-            print(out, corr, pMax, tMax, sep='\n\n')
+            print(out, corr, pVal, tMax, sep='\n\n')
 
 
 

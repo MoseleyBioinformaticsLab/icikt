@@ -64,4 +64,9 @@ Call iciktArray on your dataArray, saving outputs to separate variables:
 
         out, corr, pVal, tMax = icikt.iciktArray(dataArray)
         print(out,corr,pVal,tMax,sep='\n\n')
-
+        
+        # saving outputs to files
+        np.savetxt('outArray.csv', out, delimiter=',')
+        np.savetxt('corrArray.csv', corr, delimiter=',')
+        np.savetxt('pValArray.csv', pVal, delimiter=',')
+        np.savetxt('tMaxArray.csv', tMax, delimiter=',')
