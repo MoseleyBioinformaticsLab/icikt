@@ -13,7 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
-autodoc_mock_imports = ['kendall_dis']
+autodoc_mock_imports = ['_kendall_dis']
 
 
 # -- Project information -----------------------------------------------------
