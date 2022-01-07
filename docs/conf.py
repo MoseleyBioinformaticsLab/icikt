@@ -23,7 +23,7 @@ copyright = '2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 author = 'Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1.1'
+release = '1.1.3'
 
 
 # -- General configuration ---------------------------------------------------
