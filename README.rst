@@ -97,7 +97,7 @@ Running through python script :
 
         dataArray = np.genfromtxt('/path/to/file.tsv', delimiter="\t")
         # or with random values
-        dataArray = numpy.random.randn(100, 2)
+        dataArray = np.random.randn(100, 2)
 
         # running just 2 arrays with icikt
         corr, pVal, tMax = icikt.icikt(dataArray[:,0], dataArray[:,1])
