@@ -6,8 +6,9 @@ information-content-informed Kendall Tau correlation coefficient between
 arrays, while also handling missing values or values which need to be removed.
 """
 
+import sys
 import numpy as np
-
+import typing as t
 from scipy.stats import mstats_basic
 from scipy.stats import distributions
 
@@ -19,26 +20,20 @@ import pyximport
 from . import _kendall_dis
 
 
-def icikt(x, y, perspective='global'):
+def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
 
     :param x: First array of data
-    :type x: :class:`numpy.ndarray`
     :param y: Second array of data
-    :type y: :class:`numpy.ndarray`
     :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
-    :type perspective: :py:class:`str`
     :return: tuple with correlation, pvalue, and tauMax values
-    :rtype: :py:class:`tuple`
     """
 
-    def countRankTie(ranks):
+    def countRankTie(ranks: np.ndarray) -> tuple:
         """Counts rank ties.
 
         :param ranks: input array
-        :type ranks: :class:`numpy.ndarray`
         :return: tuple of int sums
-        :rtype: :py:class:`tuple`
         """
         count = np.bincount(ranks).astype('int64', copy=False)
         count = count[count > 1]
@@ -47,13 +42,11 @@ def icikt(x, y, perspective='global'):
                 (count * (count - 1.) * (count - 2)).sum(),
                 (count * (count - 1.) * (2 * count + 5)).sum())
 
-    def normtestFinish(z):
+    def normtestFinish(z: float) -> tuple:
         """Common code between all the normality-test functions.
 
         :param z: z value
-        :type z: :py:class:`float`
         :return: tuple of z(float) and prob(int or float or None)
-        :rtype: :py:class:`tuple`
         """
         prob = 2 * distributions.norm.sf(np.abs(z))
 
@@ -105,7 +98,7 @@ def icikt(x, y, perspective='global'):
     # Note that tot = con + dis + (xtie - ntie) + (ytie - ntie) + ntie
     #               = con + dis + xtie + ytie - ntie
     conMinusDis = tot - xtie - ytie + ntie - 2 * dis
-    tau = conMinusDis / np.sqrt((tot - xtie)*(tot - ytie))
+    tau = conMinusDis / np.sqrt((tot - xtie) * (tot - ytie))
     conPlusDis = tot - xtie - ytie + ntie
     tauMax = conPlusDis / np.sqrt((tot - xtie) * (tot - ytie))
 
@@ -136,26 +129,22 @@ def icikt(x, y, perspective='global'):
     return tau, pvalue, tauMax
 
 
-def iciktArray(dataArray,
-               globalNA=0,
-               perspective='global',
-               scaleMax=True,
-               diagGood=True):
+def iciktArray(dataArray: np.ndarray,
+               globalNA: float or None = 0,
+               perspective: str = 'global',
+               scaleMax: bool = True,
+               diagGood: bool = True,
+               includeOnly: tuple or int or float or None = None) -> tuple:
     """Calls iciKT to calculate ICI-Kendall-Tau between every combination of
     columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.
 
     :param dataArray: 2d array with columns of data to analyze
-    :type dataArray: :class:`numpy.ndarray`
     :param globalNA: Optional value to replace with np.nan. Default is 0.
-    :type globalNA: :py:class:`float` or :class:`None`
     :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
-    :type perspective: :py:class:`str`
     :param scaleMax: should everything be scaled compared to the maximum correlation?
-    :type scaleMax: :py:class:`bool`
     :param diagGood: should the diagonal entries reflect how many entries in the sample were "good"?
-    :type diagGood: :py:class:`bool`
+    :param includeOnly: only run correlations of specified columns/combinations
     :return: tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays
-    :rtype: :py:class:`tuple`
 
     Future Parameters:
     featureNA
@@ -163,7 +152,7 @@ def iciktArray(dataArray,
 
     """
     if globalNA is not None:
-        dataArray[dataArray == globalNA] = np.nan
+        dataArray.astype('float')[dataArray == globalNA] = np.nan
 
     # bool array where the nans are false
     excludeLoc = np.logical_not(np.isnan(dataArray))
@@ -172,8 +161,9 @@ def iciktArray(dataArray,
     size = dataArray.shape[1]
     corrArray, pvalArray, tauMaxArray = np.zeros([size, size]), np.zeros([size, size]), np.zeros([size, size])
 
+    # generating all pairwise comparison combinations
     iPC = it.combinations(range(size), 2)
-    pairwiseComparisons = np.ndarray(shape=(2, (size*(size-1))//2))
+    pairwiseComparisons = np.ndarray(shape=(2, (size * (size - 1)) // 2))
     count = 0
     for i in iPC:
         pairwiseComparisons[0, count] = i[0]
@@ -185,10 +175,30 @@ def iciktArray(dataArray,
         pairwiseComparisons = np.concatenate((pairwiseComparisons, extraComparisons), axis=1)
 
     pairwiseComparisons = pairwiseComparisons.astype(int)
-    
+
+    # if includeOnly is used and only specific comparisons are wanted, subset pairwiseComparisons
+    if includeOnly is not None:
+        # if one int/float is given, subset to all comparisons including this number
+        if type(includeOnly) in (int, float):
+            include = [i == includeOnly for i in pairwiseComparisons]
+            include = np.logical_or(include[0], include[1])
+            pairwiseComparisons = pairwiseComparisons[:, include]
+        elif type(includeOnly) == tuple:
+            # if two lists of equal length are given in a tuple, convert to ndarray and set this as the pairwiseComparisons
+            if len(includeOnly) == 2:
+                if len(includeOnly[0]) == len(includeOnly[1]):
+                    pairwiseComparisons = np.asarray(includeOnly)
+                else:
+                    print("Comparison lists need to be the same size")
+                    sys.exit()
+            else:
+                print("Only two lists should be given")
+                sys.exit()
+
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
     with multiprocessing.Pool() as pool:
-        tempList = pool.starmap(icikt, ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
+        tempList = pool.starmap(icikt,
+                                ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
 
     # separates+stores the correlation, pvalue, and tauMax data from every combination at the correct
     # location in the output arrays

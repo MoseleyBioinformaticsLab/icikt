@@ -2,13 +2,13 @@ import numpy as np
 import time
 
 import sys
+
 # inserting icikt path
-sys.path.insert(1, '/mlab/data/psbhatt/projects/pythonICIKendallTau/icikt')
+sys.path.insert(1, '/mlab/data/psbhatt/projects/icikt/icikt/icikt.py')
 import icikt
 
 
 def iciKTTest(array):
-
     x = array[:, 0]
     y = array[:, 1]
 
@@ -29,9 +29,8 @@ def iciKTTest(array):
 
 
 def iciktArrayTest(array):
-
     sTime = time.time()
-    out, corr, pVal, tMax = icikt.iciktArray(array)
+    out, corr, pVal, tMax = icikt.iciktArray(array, globalNA=0, perspective="global", scaleMax=True, diagGood=True, includeOnly=None)
     fTime = time.time()
 
     print(out, corr, pVal, tMax, sep="\n")
@@ -39,5 +38,11 @@ def iciktArrayTest(array):
 
 
 largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/icikt/test/bigTest.csv', delimiter=",")
+smallArray = np.array([[1, 0, 3, 4, 5],
+                      [7, 8, 9, 10, 11],
+                      [1, 2, 3, 4, 5],
+                      [6, 7, 8, 9, 10],
+                      [11, 12, 13, 14, 15]])
+
 # iciKTTest(largeArray)
 iciktArrayTest(largeArray)
