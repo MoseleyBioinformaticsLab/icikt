@@ -12,7 +12,8 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../'))
+from icikt import __version__
+sys.path.insert(0, os.path.abspath('../src'))
 autodoc_mock_imports = ['_kendall_dis']
 
 
@@ -23,7 +24,8 @@ copyright = '2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 author = 'Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.0'
+release = __version__
+version = __version__
 
 
 # -- General configuration ---------------------------------------------------
