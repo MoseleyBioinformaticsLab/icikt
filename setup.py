@@ -17,7 +17,7 @@ def readme():
 
 
 def find_version():
-    with open('icikt/__init__.py', 'r') as fd:
+    with open('src/icikt/__init__.py', 'r') as fd:
         version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', fd.read(), re.MULTILINE).group(1)
     if not version:
         raise RuntimeError('Cannot find version information')
@@ -43,8 +43,8 @@ setup(
     description='Python tool to calculate the KendallTau correlation coefficients.',
     keywords='icikendalltau missing values',
     license='Modified Clear BSD License',
-    url='https://gitlab.cesb.uky.edu/rmflight/pythonICIKendallTau',
-    packages=find_packages(),
+    url='https://github.com/MoseleyBioinformaticsLab/icikt',
+    packages=find_packages("src", exclude=['doc', 'docs', 'vignettes']),
     platforms='any',
     long_description=readme(),
     cmdclass={'build_ext': Cython.Build.build_ext},
