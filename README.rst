@@ -3,9 +3,10 @@ icikt
 
 Description
 --------------
-The ``icikt`` package provides a Python tool to calculate an information-content-informed 
-Kendall Tau correlation coefficient between arrays, while also handling missing
-values or values which need to be removed.
+The ``icikt`` package handles missing data before calculating a correlation
+between datasets for variables. The missing values are treated as information from a 
+left-centered distribution perspective and are included in the calculation of concordant
+and discordant pairs used in calculating the correlation value.
 
 Full API documentation, user guide, and tutorial can be found on readthedocs_
 
@@ -48,30 +49,57 @@ Upgrade on Windows
 
 
 
-GitHub Package installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Get the source code
+~~~~~~~~~~~~~~~~~~~
+Code is available on GitHub: https://github.com/MoseleyBioinformaticsLab/icikt
 
-Make sure you have git_ installed:
+To clone the repo, first make sure you have git_ installed:
 
 .. code:: bash
 
-   git clone https://github.com/MoseleyBioinformaticsLab/pythonICIKendallTau.git
+   git clone https://github.com/MoseleyBioinformaticsLab/icikt.git
+
 
 Dependencies
 ~~~~~~~~~~~~
-``icikt`` requires the following Python libraries:
+The ``icikt`` package depends on several Python libraries:
     * numpy_ and scipy_ for mathmatical calculations.
     * docopt_ for a command line interface.
     * Cython_ for optimized performance.
 
-To install dependencies manually:
+The ``pip`` command will install all dependencies automatically, but if you wish to install them manually, run the following commands:
 
-.. code:: bash
+   * numpy for creating and modifying ndarrays of data
+      * To install numpy run the following:
 
-   pip3 install numpy
-   pip3 install scipy
-   pip3 install docopt
-   pip3 install cython
+        .. code:: bash
+
+           python3 -m pip install numpy  # On Linux, Mac OS X
+           py -3 -m pip install numpy    # On Windows
+
+   * scipy for performing the kendall-tau calculations
+      * To install the scipy Python library run the following:
+
+        .. code:: bash
+
+           python3 -m pip install scipy  # On Linux, Mac OS X
+           py -3 -m pip install scipy    # On Windows
+           
+   * docopt for a command line interface
+      * To install the docopt Python library run the following:
+    
+        .. code:: bash
+    
+           python3 -m pip install docopt  # On Linux, Mac OS X
+           py -3 -m pip install docopt    # On Windows
+
+   * Cython for the cythonized kendall_dis method
+      * To install the Cython Python library run the following:
+    
+        .. code:: bash
+    
+           python3 -m pip install Cython  # On Linux, Mac OS X
+           py -3 -m pip install Cython    # On Windows
 
 
 Basic usage
