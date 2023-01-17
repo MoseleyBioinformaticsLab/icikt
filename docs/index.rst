@@ -10,7 +10,6 @@ Documentation index:
    :maxdepth: 2
    :caption: Contents:
 
-   guide
    api
    tutorial
 
