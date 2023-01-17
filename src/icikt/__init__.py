@@ -4,7 +4,7 @@ try:
         from . import _kendall_dis
 except ImportError:
         from . import kendall_dis as _kendall_dis
-from .icikt import icikt
-from .icikt import iciktArray
+from .methods import icikt
+from .methods import iciktArray
 
 
