@@ -1,7 +1,7 @@
 The icikt API Reference
 =======================
 
-.. automodule:: icikt
+.. automodule:: icikt.methods
     :members:
 
 .. automodule:: icikt.kendall_dis

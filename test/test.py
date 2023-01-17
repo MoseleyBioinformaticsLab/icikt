@@ -4,8 +4,8 @@ import time
 import sys
 
 # inserting icikt path
-sys.path.insert(1, '/mlab/data/psbhatt/projects/icikt/icikt/icikt.py')
-import icikt
+sys.path.insert(1, '/mlab/data/psbhatt/projects/icikt/icikt/methods.py')
+import methods as icikt
 
 
 def iciKTTest(array):
