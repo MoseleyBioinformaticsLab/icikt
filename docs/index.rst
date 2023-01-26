@@ -10,7 +10,7 @@ Documentation index:
    :maxdepth: 3
    :caption: Contents:
 
-   .. include:: ../README.rst
+   guide
    api
    tutorial
 

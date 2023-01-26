@@ -1,4 +1,4 @@
-User Guide
+icikt Introduction
 ==========
 
 .. include:: ../README.rst
