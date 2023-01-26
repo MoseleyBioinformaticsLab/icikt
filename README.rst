@@ -63,11 +63,29 @@ To clone the repo, first make sure you have git_ installed:
 Dependencies
 ~~~~~~~~~~~~
 The ``icikt`` package depends on several Python libraries:
-    * numpy_ and scipy_ for mathmatical calculations.
     * docopt_ for a command line interface.
+    * scipy_ and numpy_ for mathmatical calculations.
     * Cython_ for optimized performance.
 
+NOTE: NumPy and Cython must be preinstalled in order for this package to work.
+
 The ``pip`` command will install all dependencies automatically, but if you wish to install them manually, run the following commands:
+   
+   * docopt for a command line interface
+      * To install the docopt Python library run the following:
+    
+        .. code:: bash
+    
+           python3 -m pip install docopt  # On Linux, Mac OS X
+           py -3 -m pip install docopt    # On Windows
+   
+   * scipy for performing the kendall-tau calculations
+      * To install the scipy Python library run the following:
+
+        .. code:: bash
+
+           python3 -m pip install scipy  # On Linux, Mac OS X
+           py -3 -m pip install scipy    # On Windows
 
    * numpy for creating and modifying ndarrays of data
       * To install numpy run the following:
@@ -76,22 +94,6 @@ The ``pip`` command will install all dependencies automatically, but if you wish
 
            python3 -m pip install numpy  # On Linux, Mac OS X
            py -3 -m pip install numpy    # On Windows
-
-   * scipy for performing the kendall-tau calculations
-      * To install the scipy Python library run the following:
-
-        .. code:: bash
-
-           python3 -m pip install scipy  # On Linux, Mac OS X
-           py -3 -m pip install scipy    # On Windows
-           
-   * docopt for a command line interface
-      * To install the docopt Python library run the following:
-    
-        .. code:: bash
-    
-           python3 -m pip install docopt  # On Linux, Mac OS X
-           py -3 -m pip install docopt    # On Windows
 
    * Cython for the cythonized kendall_dis method
       * To install the Cython Python library run the following:
