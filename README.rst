@@ -105,9 +105,10 @@ The ``pip`` command will install all dependencies automatically, but if you wish
 
 
 WARNING- If the following pip error message is generated, then the python3 devel package must be installed:
-.. code:: bash
-   
-   "fatal error: Python.h: No such file or directory"
+
+   .. code:: bash
+
+      "fatal error: Python.h: No such file or directory"
 
 
 Basic usage
