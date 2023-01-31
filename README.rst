@@ -67,7 +67,7 @@ The ``icikt`` package depends on several Python libraries:
     * scipy_ and numpy_ for mathmatical calculations.
     * Cython_ for optimized performance.
 
-NOTE: NumPy and Cython must be preinstalled in order for this package to work.
+NOTE- NumPy and Cython must be preinstalled in order for this package to work.
 
 The ``pip`` command will install all dependencies automatically, but if you wish to install them manually, run the following commands:
    
@@ -102,6 +102,12 @@ The ``pip`` command will install all dependencies automatically, but if you wish
     
            python3 -m pip install Cython  # On Linux, Mac OS X
            py -3 -m pip install Cython    # On Windows
+
+
+WARNING- If the following pip error message is generated, then the python3 devel package must be installed:
+.. code:: bash
+   
+   "fatal error: Python.h: No such file or directory"
 
 
 Basic usage
