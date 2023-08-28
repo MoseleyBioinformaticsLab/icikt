@@ -7,6 +7,7 @@ arrays, while also handling missing values or values which need to be removed.
 """
 
 import sys
+import os
 import numpy as np
 import typing as t
 from scipy.stats import mstats_basic
@@ -199,9 +200,15 @@ def iciktArray(dataArray: np.ndarray,
                 sys.exit()
 
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
+    nCompare = pairwiseComparisons.shape[1]
+    nThread = len(os.sched_getaffinity(0))
+    compareThread = np.ceil(nCompare / nThread)
+    compareThread = compareThread.astype(int)
+
     with multiprocessing.Pool() as pool:
         tempList = pool.starmap(icikt,
-                                ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
+                                ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T),
+                                chunksize = compareThread)
 
     # separates+stores the correlation, pvalue, and tauMax data from every combination at the correct
     # location in the output arrays
