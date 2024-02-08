@@ -23,6 +23,9 @@ except ImportError:
     from . import kendall_dis_doc as _kendall_dis
 
 
+def icikt_mp_wrapper(pairwiseIndices, perspective):
+    return icikt(dataArray[:, pairwiseIndices[0]], dataArray[:, pairwiseIndices[1]], perspective)
+
 def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
 
@@ -137,6 +140,7 @@ def iciktArray(dataArray: np.ndarray,
                perspective: str = 'global',
                scaleMax: bool = True,
                diagGood: bool = True,
+               chunkSize: int = 1,
                includeOnly: tuple or int or float or None = None) -> tuple:
     """Calls iciKT to calculate ICI-Kendall-Tau between every combination of
     columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.
@@ -146,6 +150,7 @@ def iciktArray(dataArray: np.ndarray,
     :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
     :param scaleMax: should everything be scaled compared to the maximum correlation?
     :param diagGood: should the diagonal entries reflect how many entries in the sample were "good"?
+    :param chunksize: What should the size of the chunks be for multiprocessing? Default is 1.
     :param includeOnly: only run correlations of specified columns/combinations
     :return: tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays
 
@@ -156,6 +161,9 @@ def iciktArray(dataArray: np.ndarray,
     """
     if globalNA is not None:
         dataArray.astype('float')[dataArray == globalNA] = np.nan
+
+    global globalData
+    globalData = dataArray
 
     # bool array where the nans are false
     excludeLoc = np.logical_not(np.isnan(dataArray))
@@ -200,8 +208,8 @@ def iciktArray(dataArray: np.ndarray,
 
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
     with multiprocessing.Pool() as pool:
-        tempList = pool.starmap(icikt,
-                                ((dataArray[:, i[0]], dataArray[:, i[1]], perspective) for i in pairwiseComparisons.T))
+        tempList = pool.starmap(icikt_mp_wrapper,
+                                ((i, perspective) for i in pairwiseComparisons.T), chunksize=chunkSize)
 
     # separates+stores the correlation, pvalue, and tauMax data from every combination at the correct
     # location in the output arrays
