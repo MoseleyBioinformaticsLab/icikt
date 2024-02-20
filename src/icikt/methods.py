@@ -16,15 +16,16 @@ import itertools as it
 import multiprocessing
 
 import pyximport
+pyximport.install()
 
 try:
-    from . import _kendall_dis
+    from icikt import _kendall_dis
 except ImportError:
-    from . import kendall_dis_doc as _kendall_dis
+    from icikt import kendall_dis_doc as _kendall_dis
 
 
 def icikt_mp_wrapper(pairwiseIndices, perspective):
-    return icikt(dataArray[:, pairwiseIndices[0]], dataArray[:, pairwiseIndices[1]], perspective)
+    return icikt(globalData[:, pairwiseIndices[0]], globalData[:, pairwiseIndices[1]], perspective)
 
 def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
@@ -134,6 +135,8 @@ def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
 
     return tau, pvalue, tauMax
 
+
+globalData = None
 
 def iciktArray(dataArray: np.ndarray,
                globalNA: float or None = 0,

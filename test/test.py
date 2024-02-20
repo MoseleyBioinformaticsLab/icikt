@@ -2,9 +2,12 @@ import numpy as np
 import time
 
 import sys
-
+import os
 # inserting icikt path
-sys.path.insert(1, '/mlab/data/psbhatt/projects/icikt/icikt/methods.py')
+icikt_path = '../src/icikt/'
+# print(icikt_path)
+sys.path.insert(0, icikt_path)
+print(sys.path)
 import methods as icikt
 
 
