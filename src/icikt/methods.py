@@ -27,6 +27,7 @@ except ImportError:
 def icikt_mp_wrapper(pairwiseIndices, perspective):
     return icikt(globalData[:, pairwiseIndices[0]], globalData[:, pairwiseIndices[1]], perspective)
 
+
 def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
     """Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.
 

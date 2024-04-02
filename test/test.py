@@ -32,12 +32,15 @@ def iciKTTest(array):
 
 
 def iciktArrayTest(array):
-    sTime = time.time()
-    out, corr, pVal, tMax = icikt.iciktArray(array, globalNA=0, perspective="global", scaleMax=True, diagGood=True, includeOnly=None)
-    fTime = time.time()
+    print("test")
+    for i in range(1,10):
+        sTime = time.time()
+        out, corr, pVal, tMax = icikt.iciktArray(array, globalNA=0, perspective="global", scaleMax=True, diagGood=True, includeOnly=None, chunkSize=i)
+        fTime = time.time()
+        print("Runtime: ", fTime - sTime)
 
-    print(out, corr, pVal, tMax, sep="\n")
-    print("Runtime: ", fTime - sTime)
+
+    # print(out, corr, pVal, tMax, sep="\n")
 
 
 largeArray = np.genfromtxt('/mlab/data/psbhatt/projects/icikt/test/bigTest.csv', delimiter=",")

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools", "wheel", "setuptools_scm[toml]>=6.2", "numpy>=1.18.2", "Cython>=3.0.0a11", "scipy >= 1.4.1", "docopt >= 0.6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "icikt"
+description = "Python tool to calculate the KendallTau correlation coefficients."
+readme = "README.rst"
+requires-python = ">=3.10"
+keywords = ["icikendalltau", "missing values"]
+license = {file = "LICENSE"}
+#classifiers = [
+#   'Environment :: Console',
+#        'Intended Audience :: Developers',
+#        'Intended Audience :: Science/Research',
+#        'License :: OSI Approved :: BSD License',
+#        'Operating System :: OS Independent',
+#        'Programming Language :: Python :: 3.10',
+#        'Topic :: Scientific/Engineering :: Bio-Informatics',
+#        'Topic :: Software Development :: Libraries :: Python Modules',
+#]
+dynamic = ["version", "dependencies"]
+
+[project.urls]
+"GitHub" = "https://github.com/MoseleyBioinformaticsLab/icikt"
+
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements.txt"}
+
+[project.scripts]
+icikt = "icikt.__main__:main"
+
+[tool.setuptools_scm]
+write_to = "src/icikt/_version.py"
+
+[tool.setuptools.cmdclass]
+build_py = "_custom_build.build_py"
