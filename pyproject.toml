@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "icikt"
 description = "Python tool to calculate the KendallTau correlation coefficients."
 readme = "README.rst"
-requires-python = ">=3.10"
+requires-python = ">=3.4"
 keywords = ["icikendalltau", "missing values"]
 license = {file = "LICENSE"}
 #classifiers = [
