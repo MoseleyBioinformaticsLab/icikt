@@ -22,8 +22,8 @@ def test_icikt():
     corr, pVal, tMax = icikt.icikt(x, y)
     corr, pVal, tMax = icikt.icikt(x, y, perspective='local')
 
-    #testing iciktArray
-    out, corr, pVal, tMax = icikt.iciktArray(dataArray=array, globalNA=[0], perspective="global", scaleMax=True, diagGood=True, includeOnly=None, chunkSize=1)
+    # testing iciktArray
+    out, corr, pVal, tMax = icikt.iciktArray(dataArray=array, globalNA=[0])
 
 
 def test_error():
