@@ -7,13 +7,14 @@ arrays, while also handling missing values or values which need to be removed.
 """
 
 import sys
+import multiprocessing
 import numpy as np
 import typing as t
+import itertools as it
+import logging as log
 from scipy.stats import mstats_basic
 from scipy.stats import distributions
-
-import itertools as it
-import multiprocessing
+from .utility import setupMissingMatrix
 
 import pyximport
 pyximport.install()
@@ -24,7 +25,13 @@ except ImportError:
     from icikt import kendall_dis_doc as _kendall_dis
 
 
-def icikt_mp_wrapper(pairwiseIndices, perspective):
+def icikt_mp_wrapper(pairwiseIndices: np.ndarray, perspective: str) -> tuple:
+    """Wrapper function which is given to multiprocessing. This then calls the icikt method using the indices of pairwise combinations and the perspective.
+
+    :param pairwiseIndices: Indices of pairwise combination
+    :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
+    :return: tuple result of the icikt method
+    """
     return icikt(globalData[:, pairwiseIndices[0]], globalData[:, pairwiseIndices[1]], perspective)
 
 
@@ -115,32 +122,27 @@ def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
 
     # The p-value calculation is the same for all variants since the p-value
     # depends only on conMinusDis.
-    if (xtie == 0 and ytie == 0) and (size <= 33 or
-                                      min(dis, tot - dis) <= 1):
-        method = 'exact'
-    else:
-        method = 'asymptotic'
-
-    if xtie == 0 and ytie == 0 and method == 'exact':
+    if (xtie == 0 and ytie == 0) and (size <= 33 or min(dis, tot - dis) <= 1):
+        # method = 'exact'
         pvalue = mstats_basic._kendall_p_exact(size, tot - dis)
-    elif method == 'asymptotic':
+    else:
+        # method = 'asymptotic'
         # conMinusDis is approx normally distributed with this variance [3]_
         m = size * (size - 1.)
         var = ((m * (2 * size + 5) - x1 - y1) / 18 +
                (2 * xtie * ytie) / m + x0 * y0 / (9 * m * (size - 2)))
         zVal = conMinusDis / np.sqrt(var)
         _, pvalue = normtestFinish(zVal)
-    else:
-        raise ValueError(f"Unknown method {method} specified.  Use 'auto', "
-                         "'exact' or 'asymptotic'.")
 
     return tau, pvalue, tauMax
 
 
+# Initialize global data variable
 globalData = None
 
+
 def iciktArray(dataArray: np.ndarray,
-               globalNA: float or None = 0,
+               globalNA: list[float] = [float("nan"), float("inf"), 0.0],
                perspective: str = 'global',
                scaleMax: bool = True,
                diagGood: bool = True,
@@ -150,11 +152,11 @@ def iciktArray(dataArray: np.ndarray,
     columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.
 
     :param dataArray: 2d array with columns of data to analyze
-    :param globalNA: Optional value to replace with np.nan. Default is 0.
+    :param globalNA: Optional list of values to be considered "missing". Default is NaN, Inf, and 0.
     :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
     :param scaleMax: should everything be scaled compared to the maximum correlation?
     :param diagGood: should the diagonal entries reflect how many entries in the sample were "good"?
-    :param chunksize: What should the size of the chunks be for multiprocessing? Default is 1.
+    :param chunkSize: What should the size of the chunks be for multiprocessing? Default is 1.
     :param includeOnly: only run correlations of specified columns/combinations
     :return: tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays
 
@@ -163,14 +165,13 @@ def iciktArray(dataArray: np.ndarray,
     sampleNA
 
     """
-    if globalNA is not None:
-        dataArray.astype('float')[dataArray == globalNA] = np.nan
 
+    # Set the global variable globalData equal to the input dataArray
     global globalData
     globalData = dataArray
 
-    # bool array where the nans are false
-    excludeLoc = np.logical_not(np.isnan(dataArray))
+    # # bool array where the nans are True
+    excludeLoc = setupMissingMatrix(dataArray, globalNA)
 
     # creating empty output arrays of correct size
     size = dataArray.shape[1]
@@ -204,11 +205,11 @@ def iciktArray(dataArray: np.ndarray,
                 if len(includeOnly[0]) == len(includeOnly[1]):
                     pairwiseComparisons = np.asarray(includeOnly)
                 else:
-                    print("Comparison lists need to be the same size")
-                    sys.exit()
+                    log.error("Comparison lists need to be the same size")
+                    sys.exit(1)
             else:
-                print("Only two lists should be given")
-                sys.exit()
+                log.error("Only two lists should be given")
+                sys.exit(1)
 
     # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
     with multiprocessing.Pool() as pool:
@@ -229,7 +230,7 @@ def iciktArray(dataArray: np.ndarray,
         outArray = corrArray
 
     if diagGood:
-        nGood = np.sum(excludeLoc, axis=0)
+        nGood = np.sum(~excludeLoc, axis=0)
         np.fill_diagonal(outArray, nGood / max(nGood))
 
     return outArray, corrArray, pvalArray, tauMaxArray
