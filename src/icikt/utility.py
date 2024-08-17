@@ -1,7 +1,8 @@
 import numpy as np
+import typing as t
 
 def setupMissingMatrix(dataArray: np.ndarray,
-                       globalNA: list = [float("nan"), float("inf"), 0]) -> np.ndarray:
+                       globalNA: t.List = [float("nan"), float("inf"), 0]) -> np.ndarray:
     """ Used by iciktArray and leftCensorTest to set up the matrix of values marking which should be excluded.
 
     :param dataArray: 2d array with columns of data to analyze

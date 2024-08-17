@@ -142,7 +142,7 @@ globalData = None
 
 
 def iciktArray(dataArray: np.ndarray,
-               globalNA: list[float] = [float("nan"), float("inf"), 0.0],
+               globalNA: t.List[float] = [float("nan"), float("inf"), 0.0],
                perspective: str = 'global',
                scaleMax: bool = True,
                diagGood: bool = True,

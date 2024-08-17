@@ -5,7 +5,7 @@ from .utility import setupMissingMatrix
 
 
 def leftCensorTest(dataArray: np.ndarray,
-                   globalNA: list[float] = [float('nan'), float('inf'), 0],
+                   globalNA: t.List[float] = [float('nan'), float('inf'), 0],
                    sampleClasses: np.ndarray = None) -> dict:
     """ Does a binomial test to check if the most likely cause of missing values is due to values being below the limit
      of detection, or coming from a  left-censored distribution.
