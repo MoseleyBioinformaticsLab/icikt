@@ -6,7 +6,7 @@ import numpy as np
 
 def test_icikt():
     # testing icikt submethod
-    array = np.genfromtxt('/mlab/data/psbhatt/projects/icikt/test/bigTest.csv', delimiter=",")
+    array = np.genfromtxt('./test/bigTest.csv', delimiter=",")
 
     x = array[:, 0]
     y = array[:, 1]
@@ -27,7 +27,7 @@ def test_icikt():
 
 
 def test_error():
-    array = np.genfromtxt('/mlab/data/psbhatt/projects/icikt/test/bigTest.csv', delimiter=",")
+    array = np.genfromtxt('./test/bigTest.csv', delimiter=",")
 
     x = array[:-1, 0]
     y = array[:, 1]

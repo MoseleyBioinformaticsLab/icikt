@@ -4,12 +4,12 @@ import os
 
 test_data = [
     '--version',
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --data-format=csv',
-    'iciktArray /mlab/scratch/rmflight/praneeth/largish_sample.tsv --data-format=tsv --replace= --output=test',
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --replace=0 --mode=local --scale=False --diag=False --chunk=5',
-    'leftCensor /mlab/scratch/rmflight/praneeth/largish_sample.tsv --data-format=tsv',
-    'leftCensor /mlab/scratch/rmflight/praneeth/largish_sample.tsv --data-format=tsv --replace=0,inf',
-    'leftCensor /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --data-format=csv --replace=None',
+    'iciktArray ./test/bigTest.csv --data-format=csv',
+    'iciktArray ./test/largish_sample.tsv --data-format=tsv --replace= --output=test',
+    'iciktArray ./test/bigTest.csv --replace=0 --mode=local --scale=False --diag=False --chunk=5',
+    'leftCensor ./test/largish_sample.tsv --data-format=tsv',
+    'leftCensor ./test/largish_sample.tsv --data-format=tsv --replace=0,inf',
+    'leftCensor ./test/bigTest.csv --data-format=csv --replace=None',
 
 ]
 
@@ -21,15 +21,15 @@ def test_cli(argv: list[str]):
 
 
 error_data = [
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --data-format=error',
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --replace=error',
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --mode=error',
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --scale=error',
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --diag=error',
-    'iciktArray /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --chunk=error',
-    'leftCensor /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --data-format=error',
-    'leftCensor /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --replace=error',
-    'leftCensor /mlab/data/psbhatt/projects/icikt/test/bigTest.csv --sample=error',
+    'iciktArray ./test/bigTest.csv --data-format=error',
+    'iciktArray ./test/bigTest.csv --replace=error',
+    'iciktArray ./test/bigTest.csv --mode=error',
+    'iciktArray ./test/bigTest.csv --scale=error',
+    'iciktArray ./test/bigTest.csv --diag=error',
+    'iciktArray ./test/bigTest.csv --chunk=error',
+    'leftCensor ./test/bigTest.csv --data-format=error',
+    'leftCensor ./test/bigTest.csv --replace=error',
+    'leftCensor ./test/bigTest.csv --sample=error',
 ]
 
 
