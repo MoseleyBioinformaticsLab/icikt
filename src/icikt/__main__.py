@@ -132,3 +132,7 @@ def main():
                 print(out, corr, pVal, tMax, sep='\n\n')
         except Exception as e:
             print(e)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,6 @@
 import pytest as pt
 import os
+import typing as t
 
 
 test_data = [
@@ -15,7 +16,7 @@ test_data = [
 
 
 @pt.mark.parametrize('argv', test_data)
-def test_cli(argv: list[str]):
+def test_cli(argv: t.List[str]):
     argv = 'icikt ' + argv
     assert os.system(argv) == 0
 
@@ -34,6 +35,6 @@ error_data = [
 
 
 @pt.mark.parametrize('argv', error_data)
-def test_cli_error(argv: list[str]):
+def test_cli_error(argv: t.List[str]):
     argv = 'icikt ' + argv
     assert os.system(argv) != 0
