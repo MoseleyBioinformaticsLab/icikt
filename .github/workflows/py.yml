@@ -41,6 +41,7 @@ jobs:
         import icikt
         import timeit
         
+        def main():
         largeArray = np.genfromtxt("test/bigTest.csv", delimiter = ",")
         
         corr, pval, tmax = icikt.icikt(largeArray[:, 0], largeArray[:, 1])
@@ -67,4 +68,7 @@ jobs:
         corr, pval = scipy.stats.kendalltau(largeArray[:, 0], largeArray[:, 1])'''
 
         print(timeit.timeit(setup = setup_code, stmt = scipy_code, number = 500) / 500)
+
+        if __name__ == '__main__':
+          main()
       shell: python

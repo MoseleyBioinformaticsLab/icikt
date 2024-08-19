@@ -19,7 +19,6 @@ from scipy.stats import distributions
 from icikt.utility import setupMissingMatrix
 
 import pyximport
-
 pyximport.install()
 
 try:
@@ -29,6 +28,11 @@ except ImportError:
 
 
 def initialize_global_data(data):
+    """Initialize the global data array using shared memory
+
+    :param data: data input
+    :return: global variable data
+    """
     global globalShm
     globalShm = shared_memory.SharedMemory(create=True, size=data.nbytes)
     globalArray = np.ndarray(data.shape, dtype=data.dtype, buffer=globalShm.buf)
@@ -37,27 +41,32 @@ def initialize_global_data(data):
 
 
 def get_global_data(shmName, shape, dtype):
+    """Retrieve global data from shared memory.
+
+    :param shmName: Name of global data
+    :param shape: Shape of global data
+    :param dtype: dtype of global data
+    :return: data ndarray
+    """
     global globalShm
     if globalShm is None:
         globalShm = shared_memory.SharedMemory(name=shmName)
     return np.ndarray(shape, dtype=dtype, buffer=globalShm.buf)
 
 
-def icikt_mp_wrapper(pairwiseIndices, perspective, shm, shape, dtype):
+def icikt_mp_wrapper(pairwiseIndices: np.ndarray, perspective: str, shm: shared_memory.SharedMemory, shape: tuple, dtype: np.dtype) -> tuple:
+    """Wrapper function which is given to multiprocessing. This then calls the icikt method using the indices of pairwise combinations and the perspective.
+
+       :param pairwiseIndices: Indices of pairwise combination
+       :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
+       :param dtype: dtype in globalShm array
+       :param shape: shape of global array
+       :param shm: shared memory of global data
+       :return: tuple result of the icikt method
+       """
+
     globalDataArray = get_global_data(shm.name, shape, dtype)
     return icikt(globalDataArray[:, pairwiseIndices[0]], globalDataArray[:, pairwiseIndices[1]], perspective)
-
-
-#
-# def icikt_mp_wrapper(pairwiseIndices: np.ndarray, perspective: str) -> tuple:
-#     """Wrapper function which is given to multiprocessing. This then calls the icikt method using the indices of pairwise combinations and the perspective.
-#
-#     :param pairwiseIndices: Indices of pairwise combination
-#     :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
-#     :return: tuple result of the icikt method
-#     """
-#     global globalShm
-#     return icikt(globalShm[:, pairwiseIndices[0]], globalShm[:, pairwiseIndices[1]], perspective)
 
 
 def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
