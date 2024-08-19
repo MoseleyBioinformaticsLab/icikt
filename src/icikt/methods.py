@@ -14,7 +14,7 @@ import itertools as it
 import logging as log
 from scipy.stats import mstats_basic
 from scipy.stats import distributions
-from .utility import setupMissingMatrix
+from icikt.utility import setupMissingMatrix
 
 import pyximport
 pyximport.install()

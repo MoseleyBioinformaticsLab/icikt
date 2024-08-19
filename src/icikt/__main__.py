@@ -27,6 +27,7 @@ Options:
 from . import iciktArray
 from . import leftCensorTest
 from . import __version__ as ver
+import multiprocessing
 import docopt
 import numpy as np
 import logging as log
@@ -135,4 +136,5 @@ def main():
 
 
 if __name__ == '__main__':
+    multiprocessing.set_start_method('spawn')
     main()
