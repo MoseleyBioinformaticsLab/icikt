@@ -170,7 +170,9 @@ def iciktArray(dataArray: np.ndarray,
     global globalData
     globalData = dataArray
 
-    # # bool array where the nans are True
+    multiprocessing.set_start_method('spawn')
+
+    # bool array where the nans are True
     excludeLoc = setupMissingMatrix(dataArray, globalNA)
 
     # creating empty output arrays of correct size
@@ -236,5 +238,3 @@ def iciktArray(dataArray: np.ndarray,
     return outArray, corrArray, pvalArray, tauMaxArray
 
 
-if __name__ == '__main__':
-    multiprocessing.set_start_method('spawn')
