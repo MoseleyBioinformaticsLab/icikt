@@ -234,3 +234,7 @@ def iciktArray(dataArray: np.ndarray,
         np.fill_diagonal(outArray, nGood / max(nGood))
 
     return outArray, corrArray, pvalArray, tauMaxArray
+
+
+if __name__ == '__main__':
+    multiprocessing.set_start_method('spawn')
