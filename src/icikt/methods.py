@@ -8,6 +8,8 @@ arrays, while also handling missing values or values which need to be removed.
 
 import sys
 import multiprocessing
+from multiprocessing import shared_memory
+import functools
 import numpy as np
 import typing as t
 import itertools as it
@@ -17,6 +19,7 @@ from scipy.stats import distributions
 from icikt.utility import setupMissingMatrix
 
 import pyximport
+
 pyximport.install()
 
 try:
@@ -25,14 +28,36 @@ except ImportError:
     from icikt import kendall_dis_doc as _kendall_dis
 
 
-def icikt_mp_wrapper(pairwiseIndices: np.ndarray, perspective: str) -> tuple:
-    """Wrapper function which is given to multiprocessing. This then calls the icikt method using the indices of pairwise combinations and the perspective.
+def initialize_global_data(data):
+    global globalShm
+    globalShm = shared_memory.SharedMemory(create=True, size=data.nbytes)
+    globalArray = np.ndarray(data.shape, dtype=data.dtype, buffer=globalShm.buf)
+    globalArray[:] = data[:]
+    return globalShm
 
-    :param pairwiseIndices: Indices of pairwise combination
-    :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
-    :return: tuple result of the icikt method
-    """
-    return icikt(globalData[:, pairwiseIndices[0]], globalData[:, pairwiseIndices[1]], perspective)
+
+def get_global_data(shmName, shape, dtype):
+    global globalShm
+    if globalShm is None:
+        globalShm = shared_memory.SharedMemory(name=shmName)
+    return np.ndarray(shape, dtype=dtype, buffer=globalShm.buf)
+
+
+def icikt_mp_wrapper(pairwiseIndices, perspective, shm, shape, dtype):
+    globalDataArray = get_global_data(shm.name, shape, dtype)
+    return icikt(globalDataArray[:, pairwiseIndices[0]], globalDataArray[:, pairwiseIndices[1]], perspective)
+
+
+#
+# def icikt_mp_wrapper(pairwiseIndices: np.ndarray, perspective: str) -> tuple:
+#     """Wrapper function which is given to multiprocessing. This then calls the icikt method using the indices of pairwise combinations and the perspective.
+#
+#     :param pairwiseIndices: Indices of pairwise combination
+#     :param perspective: perspective can be 'local' or 'global'. Default is 'global'.  Global includes (NA,NA) pairs in the calculation, while local does not.
+#     :return: tuple result of the icikt method
+#     """
+#     global globalShm
+#     return icikt(globalShm[:, pairwiseIndices[0]], globalShm[:, pairwiseIndices[1]], perspective)
 
 
 def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
@@ -138,7 +163,7 @@ def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
 
 
 # Initialize global data variable
-globalData = None
+globalShm = None
 
 
 def iciktArray(dataArray: np.ndarray,
@@ -167,10 +192,7 @@ def iciktArray(dataArray: np.ndarray,
     """
 
     # Set the global variable globalData equal to the input dataArray
-    global globalData
-    globalData = dataArray
-
-    multiprocessing.set_start_method('spawn')
+    shm = initialize_global_data(dataArray)
 
     # bool array where the nans are True
     excludeLoc = setupMissingMatrix(dataArray, globalNA)
@@ -213,10 +235,19 @@ def iciktArray(dataArray: np.ndarray,
                 log.error("Only two lists should be given")
                 sys.exit(1)
 
-    # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list
-    with multiprocessing.Pool() as pool:
-        tempList = pool.starmap(icikt_mp_wrapper,
-                                ((i, perspective) for i in pairwiseComparisons.T), chunksize=chunkSize)
+    try:
+        wrapperWithSharedMemory = functools.partial(icikt_mp_wrapper,
+                                                    perspective=perspective,
+                                                    shm=shm,
+                                                    shape=dataArray.shape,
+                                                    dtype=dataArray.dtype)
+
+        # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list]
+        with multiprocessing.get_context('spawn').Pool() as pool:
+            tempList = pool.map(wrapperWithSharedMemory, pairwiseComparisons.T, chunksize=chunkSize)
+    finally:
+        shm.close()
+        shm.unlink()
 
     # separates+stores the correlation, pvalue, and tauMax data from every combination at the correct
     # location in the output arrays
@@ -236,5 +267,3 @@ def iciktArray(dataArray: np.ndarray,
         np.fill_diagonal(outArray, nGood / max(nGood))
 
     return outArray, corrArray, pvalArray, tauMaxArray
-
-
