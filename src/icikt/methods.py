@@ -24,7 +24,7 @@ pyximport.install()
 try:
     from icikt import _kendall_dis
 except ImportError:
-    from icikt import kendall_dis_doc as _kendall_dis
+    from icikt import kendall_dis as _kendall_dis
 
 
 def initialize_global_data(data):
