@@ -2,6 +2,6 @@
 import typing as T
 
 
-def kendall_dis(x, y):
+def kendall_dis_doc(x, y):
     print("Cython package is not properly installed")
     pass
