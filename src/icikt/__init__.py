@@ -11,9 +11,9 @@ except ImportError:
     __version__ = _gv(_path.join(_path.dirname(__file__), _path.pardir))
 
 try:
-        from . import _kendall_dis
+        from icikt import _kendall_dis
 except ImportError:
-        from . import kendall_dis as _kendall_dis
+        from icikt import kendall_dis as _kendall_dis
 
 from .methods import icikt
 from .methods import iciktArray

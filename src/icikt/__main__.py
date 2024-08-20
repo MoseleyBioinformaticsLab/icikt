@@ -24,9 +24,9 @@ Options:
 
 """
 
-from . import iciktArray
-from . import leftCensorTest
-from . import __version__ as ver
+from icikt import iciktArray
+from icikt import leftCensorTest
+from icikt import __version__ as ver
 import multiprocessing
 import docopt
 import numpy as np

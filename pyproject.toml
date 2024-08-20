@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "wheel", "setuptools_scm[toml]>=6.2", "numpy>=1.18.2", "Cython>=3.0.0a11", "scipy >= 1.4.1", "docopt >= 0.6.2"]
+requires = ["setuptools", "wheel", "setuptools_scm[toml]>=6.2", "numpy>=1.18.2", "Cython>=0.29.24", "scipy >= 1.4.1", "docopt >= 0.6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
