@@ -39,6 +39,6 @@ jobs:
   #   uses: ./.github/workflows/tests.yml
   #   with:
   #     install_command: "python3 -m pip install <package-name>==${{ needs.release-version.outputs.version }}"
-  publish-documentation:
-    needs: test-pypi
-    uses: ./.github/workflows/documentation.yml
+  # publish-documentation:
+  #   needs: test-pypi
+  #   uses: ./.github/workflows/documentation.yml
