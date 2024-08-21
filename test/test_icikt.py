@@ -2,9 +2,16 @@ import pytest as pt
 import os
 import icikt
 import numpy as np
+import sys
+
+test_data = [
+    'global',
+    'local'
+]
 
 
-def test_icikt():
+@pt.mark.parametrize('persp', test_data)
+def test_icikt(persp):
     # testing icikt submethod
     array = np.genfromtxt('./test/bigTest.csv', delimiter=",")
 
@@ -19,11 +26,21 @@ def test_icikt():
     np.nan_to_num(x, copy=False, nan=naReplaceX)
     np.nan_to_num(y, copy=False, nan=naReplaceY)
 
-    corr, pVal, tMax = icikt.icikt(x, y)
-    corr, pVal, tMax = icikt.icikt(x, y, perspective='local')
+    try:
+        corr, pVal, tMax = icikt.icikt(x, y, perspective=persp)
+    except Exception:
+        pt.fail("Error")
+
+
+def test_iciktArray():
+    # testing icikt submethod
+    array = np.genfromtxt('./test/bigTest.csv', delimiter=",")
 
     # testing iciktArray
-    out, corr, pVal, tMax = icikt.iciktArray(dataArray=array, globalNA=[0])
+    try:
+        out, corr, pVal, tMax = icikt.iciktArray(dataArray=array, globalNA=[0])
+    except Exception:
+        pt.fail("Error")
 
 
 def test_error():
@@ -44,4 +61,3 @@ def test_error():
         corr, pVal, tMax = icikt.icikt(x, y)
     except ValueError:
         pass
-
