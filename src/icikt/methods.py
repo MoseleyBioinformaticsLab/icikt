@@ -18,9 +18,6 @@ from scipy.stats import mstats_basic
 from scipy.stats import distributions
 from icikt.utility import setupMissingMatrix
 
-import pyximport
-pyximport.install()
-
 try:
     from icikt import _kendall_dis
 except ImportError:
