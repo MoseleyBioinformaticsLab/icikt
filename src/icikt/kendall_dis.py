@@ -3,5 +3,5 @@ import logging
 
 
 def kendall_dis(x, y):
-    logging.error("Cython package is not properly installed")
+    # logging.error("Cython package is not properly installed")
     pass

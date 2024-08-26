@@ -26,7 +26,6 @@ try:
 except ImportError:
     from icikt import kendall_dis as c_kendall_dis
     logging.error("Cython package is not properly installed")
-    sys.exit(1)
 
 
 
