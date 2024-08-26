@@ -10,6 +10,7 @@ import sys
 import multiprocessing
 from multiprocessing import shared_memory
 import functools
+import logging
 import numpy as np
 import typing as t
 import itertools as it
@@ -24,6 +25,10 @@ try:
     from icikt import c_kendall_dis
 except ImportError:
     from icikt import kendall_dis as c_kendall_dis
+    logging.error("Cython package is not properly installed")
+    sys.exit(1)
+
+
 
 
 def initialize_global_data(data):
