@@ -9,14 +9,9 @@ except ImportError:
     from os import path as _path
     __version__ = _gv(_path.join(_path.dirname(__file__), _path.pardir))
 
-# try:
-#         from icikt import _kendall_dis
-# except ImportError:
-#         from icikt import kendall_dis as _kendall_dis
-#
-from .methods import icikt
-from .methods import iciktArray
-# from .utility import setupMissingMatrix
-from .left_censorship import leftCensorTest
 
+from icikt.methods import icikt
+from icikt.methods import iciktArray
+from icikt.left_censorship import leftCensorTest
+from icikt.utility import setupMissingMatrix
 

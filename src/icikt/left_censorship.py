@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.stats import binomtest
 import typing as t
-from .utility import setupMissingMatrix
+from icikt.utility import setupMissingMatrix
 
 
 def leftCensorTest(dataArray: np.ndarray,
@@ -29,8 +29,7 @@ def leftCensorTest(dataArray: np.ndarray,
 
     splitCounts = []
     for splitID, inSplit in splitIndices.items():
-
-        splitMissing = missingData[:, inSplit]
+        splitMissing = missingData[:, inSplit - 1]
         nMiss = np.sum(np.isnan(splitMissing), axis=1)
 
         if np.sum(nMiss) == 0:

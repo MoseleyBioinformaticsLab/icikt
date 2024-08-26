@@ -13,7 +13,7 @@ test_data = [
 @pt.mark.parametrize('persp', test_data)
 def test_icikt(persp):
     # testing icikt submethod
-    array = np.genfromtxt('./test/bigTest.csv', delimiter=",")
+    array = np.genfromtxt('./test/small_sample.csv', delimiter=",")
 
     x = array[:, 0]
     y = array[:, 1]
@@ -34,7 +34,7 @@ def test_icikt(persp):
 
 def test_iciktArray():
     # testing icikt submethod
-    array = np.genfromtxt('./test/bigTest.csv', delimiter=",")
+    array = np.genfromtxt('./test/small_sample.csv', delimiter=",")
 
     # testing iciktArray
     try:
@@ -44,7 +44,7 @@ def test_iciktArray():
 
 
 def test_error():
-    array = np.genfromtxt('./test/bigTest.csv', delimiter=",")
+    array = np.genfromtxt('./test/small_sample.csv', delimiter=",")
 
     x = array[:-1, 0]
     y = array[:, 1]
