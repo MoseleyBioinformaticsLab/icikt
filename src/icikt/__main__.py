@@ -24,9 +24,10 @@ Options:
 
 """
 
-from icikt.methods import iciktArray
-from icikt.left_censorship import leftCensorTest
-from icikt.__init__ import __version__ as ver
+# from icikt.methods import iciktArray
+# from icikt.left_censorship import leftCensorTest
+# from icikt import __version__ as ver
+import icikt
 import multiprocessing
 import docopt
 import numpy as np
@@ -38,7 +39,7 @@ def main():
     args = docopt.docopt(__doc__)
 
     if args["--version"]:
-        print(ver)
+        print(icikt.__version__)
 
     if args["leftCensor"]:
 
@@ -69,7 +70,7 @@ def main():
                 sys.exit(1)
 
         try:
-            results = leftCensorTest(args["<dataFilePath>"], globalNA=args["--replace"], sampleClasses=args["--samples"])
+            results = icikt.leftCensorTest(args["<dataFilePath>"], globalNA=args["--replace"], sampleClasses=args["--samples"])
             print(results)
         except Exception as e:
             print(e)
@@ -122,7 +123,7 @@ def main():
             sys.exit(1)
 
         try:
-            out, corr, pVal, tMax = iciktArray(dataArray=args["<dataFilePath>"], globalNA=args["--replace"], perspective=args["--mode"], scaleMax=args["--scale"], diagGood=args["--diag"], chunkSize=int(args["--chunk"]), includeOnly=args['--include'])
+            out, corr, pVal, tMax = icikt.iciktArray(dataArray=args["<dataFilePath>"], globalNA=args["--replace"], perspective=args["--mode"], scaleMax=args["--scale"], diagGood=args["--diag"], chunkSize=int(args["--chunk"]), includeOnly=args['--include'])
 
             if args["--output"] is not None:
                 np.savetxt(args["--output"]+'outArray.csv', out, delimiter=',')

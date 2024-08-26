@@ -18,11 +18,12 @@ from scipy.stats import mstats_basic
 from scipy.stats import distributions
 from icikt.utility import setupMissingMatrix
 
+import pyximport
+pyximport.install()
 try:
     from icikt import c_kendall_dis
 except ImportError:
-    # from icikt import kendall_dis as _kendall_dis
-    from icikt.kendall_dis import kendall_dis as c_kendall_dis
+    from icikt import kendall_dis as c_kendall_dis
 
 
 def initialize_global_data(data):
@@ -129,7 +130,7 @@ def icikt(x: np.ndarray, y: np.ndarray, perspective: str = 'global') -> tuple:
     x, y = x[perm], y[perm]
     x = np.r_[True, x[1:] != x[:-1]].cumsum(dtype=np.intp)
 
-    dis = _kendall_dis.kendall_dis(x, y)  # discordant pairs
+    dis = c_kendall_dis.kendall_dis(x, y)  # discordant pairs
 
     obs = np.r_[True, (x[1:] != x[:-1]) | (y[1:] != y[:-1]), True]
     cnt = np.diff(np.nonzero(obs)[0]).astype('int64', copy=False)
