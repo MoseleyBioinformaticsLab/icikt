@@ -19,10 +19,10 @@ from scipy.stats import distributions
 from icikt.utility import setupMissingMatrix
 
 try:
-    from icikt import _kendall_dis
+    from icikt import c_kendall_dis
 except ImportError:
     # from icikt import kendall_dis as _kendall_dis
-    from icikt.kendall_dis import kendall_dis
+    from icikt.kendall_dis import kendall_dis as c_kendall_dis
 
 
 def initialize_global_data(data):

@@ -14,7 +14,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../src'))
 from icikt import __version__
-autodoc_mock_imports = ['_kendall_dis']
+autodoc_mock_imports = ['c_kendall_dis']
 
 
 # -- Project information -----------------------------------------------------

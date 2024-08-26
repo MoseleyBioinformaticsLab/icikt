@@ -15,8 +15,8 @@ class build_py(_build_py):
 
         self.distribution.ext_modules.append(
             Extension(
-                "icikt._kendall_dis",
-                sources=["src/icikt/_kendall_dis.pyx"],
+                "icikt.c_kendall_dis",
+                sources=["src/icikt/c_kendall_dis.pyx"],
                 include_dirs=[numpy.get_include()]
             )
         )
