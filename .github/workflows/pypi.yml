@@ -24,7 +24,7 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install build
       - name: Build package
-        run: python3 -m build
+        run: python3 -m build --sdist
       - name: Publish package to a PyPi distribution
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
