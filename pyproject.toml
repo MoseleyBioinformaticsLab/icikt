@@ -32,6 +32,3 @@ icikt = "icikt.__main__:main"
 
 [tool.setuptools_scm]
 write_to = "src/icikt/_version.py"
-
-[tool.setuptools.cmdclass]
-build_py = "_custom_build.build_py"
