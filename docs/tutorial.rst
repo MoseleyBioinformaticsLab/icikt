@@ -20,27 +20,25 @@ The iciktArray function can be accessed from the command line interface::
 
     Either the "icikt" command or "python3 -m icikt" can be used to run the command line interface.
 
-    > icikt.py -h
+    > icikt -h
     
     Usage:
-        icikt.py iciktArray <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--mode=<perspective>] [--scale=<scaleMax>] [--diag=<diagGood>]
+        icikt.py iciktArray <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--mode=<perspective>] [--scale=<scaleMax>] [--diag=<diagGood>] [--chunk=<chunkSize>] [--output=<outname>] [--include=<includeOnly>]
+        icikt.py leftCensor <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--samples=<sampleClasses>]
         icikt.py -h | --help
+        icikt.py --version
 
 Using a csv file with no global replace values::
 
-    icikt.py iciktArray test.csv --data-format=csv --replace=None
+    icikt iciktArray test.csv --data-format=csv --replace=None
 
-Using a tsv file with no global replace values::
+Using a tsv file with no replacements and outputting the results with prefix of 'test'::
 
-    icikt.py iciktArray test.tsv --data-format=tsv --replace=None
-
-Using a csv file with 0 as the replace value::
-
-    icikt.py iciktArray test.csv --data-format=csv
+    icikt iciktArray <insert_name>.tsv --data-format=tsv --replace= --output=test
     
-Using a csv file in local mode with 0 as the replace value::
+Using a csv file in local mode with 0 as the replace value, no scaling, no diagonal values, and a chunk size of 5::
 
-    icikt.py iciktArray test.csv --mode=local --data-format=csv
+    icikt iciktArray <insert_name>.csv --replace=0 --mode=local --scale=False --diag=False --chunk=5
 
 
 Using icikt in a Python script

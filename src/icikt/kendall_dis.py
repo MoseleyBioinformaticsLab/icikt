@@ -3,5 +3,10 @@ import logging
 
 
 def kendall_dis(x, y):
-    # logging.error("Cython package is not properly installed")
+    """
+    Returns the kendall tau distance between two arrays
+
+    :param x: First array of data
+    :param y: Second array of data
+    """
     pass
