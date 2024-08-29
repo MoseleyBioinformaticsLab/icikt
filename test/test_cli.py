@@ -6,7 +6,7 @@ import typing as t
 test_data = [
     '--version',
     'iciktArray ./test/small_sample.csv --data-format=csv',
-    'iciktArray ./test/largish_sample.tsv --data-format=tsv --replace= --output=test',
+    'iciktArray ./test/small_sample.tsv --data-format=tsv --replace= --output=test',
     'iciktArray ./test/small_sample.csv --replace=0 --mode=local --scale=False --diag=False --chunk=5',
     'leftCensor ./test/small_sample.csv --data-format=csv',
     'leftCensor ./test/small_sample.csv --data-format=csv --replace=0,inf',
