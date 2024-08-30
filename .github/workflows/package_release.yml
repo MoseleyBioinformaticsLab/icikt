@@ -38,7 +38,7 @@ jobs:
     needs: [release-version, publish-pypi]
     uses: ./.github/workflows/tests.yml
     with:
-      install_command: "python3 -m pip install <package-name>==${{ needs.release-version.outputs.version }}"
+      install_command: "python3 -m pip install icikt==${{ needs.release-version.outputs.version }}"
   publish-documentation:
     needs: test-pypi
     uses: ./.github/workflows/documentation.yml
