@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>icikt &mdash; icikt 1.5.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=73275c37"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The icikt API Reference" href="api.html" />
+    <link rel="prev" title="Welcome to icikt’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            icikt
+          </a>
+              <div class="version">
+                1.5.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">icikt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux-mac-os-x">Install on Linux, Mac OS X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-windows">Install on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-on-linux-mac-os-x">Upgrade on Linux, Mac OS X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-on-windows">Upgrade on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-source-code">Get the source code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">The icikt API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">The icikt Tutorial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">icikt</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">icikt</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="icikt">
+<h1>icikt<a class="headerlink" href="#icikt" title="Link to this heading"></a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">icikt</span></code> package handles missing data before calculating a correlation
+between datasets for variables. The missing values are treated as information from a
+left-centered distribution perspective and are included in the calculation of concordant
+and discordant pairs used in calculating the correlation value.</p>
+<p>Full API documentation, user guide, and tutorial can be found on <a class="reference external" href="https://icikt.readthedocs.io/en/latest/">readthedocs</a></p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">icikt</span></code> package runs under Python 3.8+. Use <a class="reference external" href="https://pip.pypa.io/">pip</a> to install.
+Starting with Python 3.4, <a class="reference external" href="https://pip.pypa.io/">pip</a> is included by default.</p>
+<section id="install-on-linux-mac-os-x">
+<h3>Install on Linux, Mac OS X<a class="headerlink" href="#install-on-linux-mac-os-x" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>icikt
+</pre></div>
+</div>
+</section>
+<section id="install-on-windows">
+<h3>Install on Windows<a class="headerlink" href="#install-on-windows" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>icikt
+</pre></div>
+</div>
+</section>
+<section id="upgrade-on-linux-mac-os-x">
+<h3>Upgrade on Linux, Mac OS X<a class="headerlink" href="#upgrade-on-linux-mac-os-x" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>icikt<span class="w"> </span>--upgrade
+</pre></div>
+</div>
+</section>
+<section id="upgrade-on-windows">
+<h3>Upgrade on Windows<a class="headerlink" href="#upgrade-on-windows" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>icikt<span class="w"> </span>--upgrade
+</pre></div>
+</div>
+</section>
+<section id="get-the-source-code">
+<h3>Get the source code<a class="headerlink" href="#get-the-source-code" title="Link to this heading"></a></h3>
+<p>Code is available on GitHub: <a class="reference external" href="https://github.com/MoseleyBioinformaticsLab/icikt">https://github.com/MoseleyBioinformaticsLab/icikt</a></p>
+<p>To clone the repo, first make sure you have <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/">git</a> installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/MoseleyBioinformaticsLab/icikt.git
+</pre></div>
+</div>
+</section>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>The <code class="docutils literal notranslate"><span class="pre">icikt</span></code> package depends on several Python libraries:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="http://docopt.org/">docopt</a> for a command line interface.</p></li>
+<li><p><a class="reference external" href="https://scipy.org/scipylib/index.html">scipy</a> and <a class="reference external" href="http://www.numpy.org/">numpy</a> for mathmatical calculations.</p></li>
+<li><p><a class="reference external" href="https://cython.org/">Cython</a> for optimized performance.</p></li>
+</ul>
+</dd>
+</dl>
+<p>NOTE- NumPy and Cython must be preinstalled in order for this package to work.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pip</span></code> command will install all dependencies automatically, but if you wish to install them manually, run the following commands:</p>
+<blockquote>
+<div><ul>
+<li><dl>
+<dt>docopt for a command line interface</dt><dd><ul>
+<li><p>To install the docopt Python library run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>docopt<span class="w">  </span><span class="c1"># On Linux, Mac OS X</span>
+py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>docopt<span class="w">    </span><span class="c1"># On Windows</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>scipy for performing the kendall-tau calculations</dt><dd><ul>
+<li><p>To install the scipy Python library run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>scipy<span class="w">  </span><span class="c1"># On Linux, Mac OS X</span>
+py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>scipy<span class="w">    </span><span class="c1"># On Windows</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>numpy for creating and modifying ndarrays of data</dt><dd><ul>
+<li><p>To install numpy run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w">  </span><span class="c1"># On Linux, Mac OS X</span>
+py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w">    </span><span class="c1"># On Windows</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Cython for the cythonized kendall_dis method</dt><dd><ul>
+<li><p>To install the Cython Python library run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>Cython<span class="w">  </span><span class="c1"># On Linux, Mac OS X</span>
+py<span class="w"> </span>-3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>Cython<span class="w">    </span><span class="c1"># On Windows</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>WARNING- If the following pip error message is generated, then the python3 devel package must be installed:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;fatal error: Python.h: No such file or directory&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h2>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">icikt</span></code> package, input a 2d array with n columns each representing
+an array of data for a variable. The <cite>iciktArray</cite> will return two n x n 2d arrays for correlations and p-values.
+Each element will correspond to the result of a combination of two columns in the input array. iciktArray can also
+be called from the command-line interface given the file path for the data along with several optional parameters(more in docs/tutorial).</p>
+<p>Running through command line :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>icikt<span class="w"> </span>iciktArray<span class="w"> </span>/path/to/file.tsv<span class="w"> </span>--data-format<span class="o">=</span>tsv<span class="w"> </span>--replace<span class="o">=</span>None
+</pre></div>
+</div>
+<p>Running through python script :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">icikt</span>
+
+<span class="n">dataArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;/path/to/file.tsv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># or with random values</span>
+<span class="n">dataArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># running just 2 arrays with icikt</span>
+<span class="n">corr</span><span class="p">,</span> <span class="n">pVal</span><span class="p">,</span> <span class="n">tMax</span> <span class="o">=</span> <span class="n">icikt</span><span class="o">.</span><span class="n">icikt</span><span class="p">(</span><span class="n">dataArray</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">dataArray</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># running all combinations with iciktArray</span>
+<span class="n">scaled</span><span class="p">,</span> <span class="n">corrRaw</span><span class="p">,</span> <span class="n">pVals</span><span class="p">,</span> <span class="n">tauMax</span> <span class="o">=</span> <span class="n">icikt</span><span class="o">.</span><span class="n">iciktArray</span><span class="p">(</span><span class="n">dataArray</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>A modified Clear BSD License</p>
+<p>Copyright (c) 2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley
+All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted (subject to the limitations in the disclaimer
+below) provided that the following conditions are met:</p>
+<ul class="simple">
+<li><p>Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.</p></li>
+<li><p>Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.</p></li>
+<li><p>Neither the name of the copyright holder nor the names of its contributors may be used
+to endorse or promote products derived from this software without specific
+prior written permission.</p></li>
+<li><p>If the source code is used in a published work, then proper citation of the source
+code must be included with the published work.</p></li>
+</ul>
+<p>NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY’S PATENT RIGHTS ARE GRANTED BY THIS
+LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+“AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to icikt’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="The icikt API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

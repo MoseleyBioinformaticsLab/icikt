@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The icikt API Reference &mdash; icikt 1.5.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=73275c37"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The icikt Tutorial" href="tutorial.html" />
+    <link rel="prev" title="icikt" href="guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            icikt
+          </a>
+              <div class="version">
+                1.5.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html">icikt</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The icikt API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-information-content-informed-kendall-tau-correlation-icikt">Python Information-Content-Informed Kendall Tau Correlation (ICIKT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icikt.methods.get_global_data"><code class="docutils literal notranslate"><span class="pre">get_global_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icikt.methods.icikt"><code class="docutils literal notranslate"><span class="pre">icikt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icikt.methods.iciktArray"><code class="docutils literal notranslate"><span class="pre">iciktArray()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icikt.methods.icikt_mp_wrapper"><code class="docutils literal notranslate"><span class="pre">icikt_mp_wrapper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icikt.methods.initialize_global_data"><code class="docutils literal notranslate"><span class="pre">initialize_global_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icikt.kendall_dis.kendall_dis"><code class="docutils literal notranslate"><span class="pre">kendall_dis()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">The icikt Tutorial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">icikt</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">The icikt API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-icikt.methods">
+<span id="the-icikt-api-reference"></span><h1>The icikt API Reference<a class="headerlink" href="#module-icikt.methods" title="Link to this heading"></a></h1>
+<section id="python-information-content-informed-kendall-tau-correlation-icikt">
+<h2>Python Information-Content-Informed Kendall Tau Correlation (ICIKT)<a class="headerlink" href="#python-information-content-informed-kendall-tau-correlation-icikt" title="Link to this heading"></a></h2>
+<p>The icikt package provides a Python tool to calculate an
+information-content-informed Kendall Tau correlation coefficient between
+arrays, while also handling missing values or values which need to be removed.</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="icikt.methods.get_global_data">
+<span class="sig-prename descclassname"><span class="pre">icikt.methods.</span></span><span class="sig-name descname"><span class="pre">get_global_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shmName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/icikt/methods.html#get_global_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icikt.methods.get_global_data" title="Link to this definition"></a></dt>
+<dd><p>Retrieve global data from shared memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shmName</strong> – Name of global data</p></li>
+<li><p><strong>shape</strong> – Shape of global data</p></li>
+<li><p><strong>dtype</strong> – dtype of global data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>data ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icikt.methods.icikt">
+<span class="sig-prename descclassname"><span class="pre">icikt.methods.</span></span><span class="sig-name descname"><span class="pre">icikt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perspective</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'global'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/icikt/methods.html#icikt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icikt.methods.icikt" title="Link to this definition"></a></dt>
+<dd><p>Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – First array of data</p></li>
+<li><p><strong>y</strong> – Second array of data</p></li>
+<li><p><strong>perspective</strong> – perspective can be ‘local’ or ‘global’. Default is ‘global’.  Global includes (NA,NA) pairs in the calculation, while local does not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple with correlation, pvalue, and tauMax values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icikt.methods.iciktArray">
+<span class="sig-prename descclassname"><span class="pre">icikt.methods.</span></span><span class="sig-name descname"><span class="pre">iciktArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataArray</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalNA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[nan,</span> <span class="pre">inf,</span> <span class="pre">0.0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perspective</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'global'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleMax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagGood</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunkSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">includeOnly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/icikt/methods.html#iciktArray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icikt.methods.iciktArray" title="Link to this definition"></a></dt>
+<dd><p>Calls iciKT to calculate ICI-Kendall-Tau between every combination of
+columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataArray</strong> – 2d array with columns of data to analyze</p></li>
+<li><p><strong>globalNA</strong> – Optional list of values to be considered “missing”. Default is NaN, Inf, and 0.</p></li>
+<li><p><strong>perspective</strong> – perspective can be ‘local’ or ‘global’. Default is ‘global’.  Global includes (NA,NA) pairs in the calculation, while local does not.</p></li>
+<li><p><strong>scaleMax</strong> – should everything be scaled compared to the maximum correlation?</p></li>
+<li><p><strong>diagGood</strong> – should the diagonal entries reflect how many entries in the sample were “good”?</p></li>
+<li><p><strong>chunkSize</strong> – What should the size of the chunks be for multiprocessing? Default is 1.</p></li>
+<li><p><strong>includeOnly</strong> – only run correlations of specified columns/combinations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays</p>
+</dd>
+</dl>
+<p>Future Parameters:
+featureNA
+sampleNA</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icikt.methods.icikt_mp_wrapper">
+<span class="sig-prename descclassname"><span class="pre">icikt.methods.</span></span><span class="sig-name descname"><span class="pre">icikt_mp_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairwiseIndices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perspective</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SharedMemory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/icikt/methods.html#icikt_mp_wrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icikt.methods.icikt_mp_wrapper" title="Link to this definition"></a></dt>
+<dd><p>Wrapper function which is given to multiprocessing. This then calls the icikt method using the indices of pairwise combinations and the perspective.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pairwiseIndices</strong> – Indices of pairwise combination</p></li>
+<li><p><strong>perspective</strong> – perspective can be ‘local’ or ‘global’. Default is ‘global’.  Global includes (NA,NA) pairs in the calculation, while local does not.</p></li>
+<li><p><strong>dtype</strong> – dtype in globalShm array</p></li>
+<li><p><strong>shape</strong> – shape of global array</p></li>
+<li><p><strong>shm</strong> – shared memory of global data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple result of the icikt method</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icikt.methods.initialize_global_data">
+<span class="sig-prename descclassname"><span class="pre">icikt.methods.</span></span><span class="sig-name descname"><span class="pre">initialize_global_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/icikt/methods.html#initialize_global_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icikt.methods.initialize_global_data" title="Link to this definition"></a></dt>
+<dd><p>Initialize the global data array using shared memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – data input</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>global variable data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-icikt.kendall_dis">
+<dt class="sig sig-object py" id="icikt.kendall_dis.kendall_dis">
+<span class="sig-prename descclassname"><span class="pre">icikt.kendall_dis.</span></span><span class="sig-name descname"><span class="pre">kendall_dis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/icikt/kendall_dis.html#kendall_dis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icikt.kendall_dis.kendall_dis" title="Link to this definition"></a></dt>
+<dd><p>Returns the kendall tau distance between two arrays</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – First array of data</p></li>
+<li><p><strong>y</strong> – Second array of data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="guide.html" class="btn btn-neutral float-left" title="icikt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="The icikt Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Praneeth S. Bhatt, Robert M. Flight, Hunter N.B. Moseley.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
