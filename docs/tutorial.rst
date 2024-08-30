@@ -30,15 +30,15 @@ The iciktArray function can be accessed from the command line interface::
 
 Using a csv file with no global replace values::
 
-    icikt iciktArray test.csv --data-format=csv --replace=None
+    icikt iciktArray /path/to/file.csv --data-format=csv --replace=None
 
 Using a tsv file with no replacements and outputting the results with prefix of 'test'::
 
-    icikt iciktArray <insert_name>.tsv --data-format=tsv --replace= --output=test
+    icikt iciktArray /path/to/file.tsv --data-format=tsv --replace= --output=test
     
 Using a csv file in local mode with 0 as the replace value, no scaling, no diagonal values, and a chunk size of 5::
 
-    icikt iciktArray <insert_name>.csv --replace=0 --mode=local --scale=False --diag=False --chunk=5
+    icikt iciktArray /path/to/file.csv --replace=0 --mode=local --scale=False --diag=False --chunk=5
 
 
 Using icikt in a Python script
