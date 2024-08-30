@@ -8,7 +8,7 @@ between datasets for variables. The missing values are treated as information fr
 left-centered distribution perspective and are included in the calculation of concordant
 and discordant pairs used in calculating the correlation value.
 
-Full API documentation, user guide, and tutorial can be found on readthedocs_
+Full API documentation, user guide, and tutorial can be found on Github_Pages_
 
 Installation
 --------------
@@ -189,7 +189,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGE.
 
 
-.. _readthedocs: https://icikt.readthedocs.io/en/latest/
+.. _Github_Pages: https://moseleybioinformaticslab.github.io/icikt/
 .. _pip: https://pip.pypa.io/
 .. _git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/
 .. _numpy: http://www.numpy.org/
