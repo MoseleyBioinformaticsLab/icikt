@@ -17,7 +17,7 @@ def leftCensorTest(dataArray: np.ndarray,
     """
     # If sampleClasses not given, set everything to the same class 'A'
     if sampleClasses is None:
-        sampleClasses = np.full(shape=len(dataArray), fill_value='A')
+        sampleClasses = np.full(shape=dataArray.shape[1], fill_value='A')
 
     # Split based on sampleClasses
     splitIndices = {cls: np.where(sampleClasses == cls)[0] for cls in set(sampleClasses.flat)}
@@ -54,7 +54,7 @@ def leftCensorTest(dataArray: np.ndarray,
     if sampleClasses is None:
         splitCounts = [(trials, success) for trials, success, _ in splitCounts]
 
-    return {'values': splitCounts, 'binomialTest': binomRes}
+    return binomRes, splitCounts
 
 
 def calcMatrixMedians(inMatrix: np.ndarray,
