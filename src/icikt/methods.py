@@ -15,6 +15,7 @@ import numpy as np
 import typing as t
 import itertools as it
 import logging as log
+import os
 from scipy.stats import mstats_basic
 from scipy.stats import distributions
 from icikt.utility import setupMissingMatrix
@@ -196,7 +197,7 @@ def iciktArray(dataArray: np.ndarray,
     :param diagGood: should the diagonal entries reflect how many entries in the sample were "good"?
     :param chunkSize: What should the size of the chunks be for multiprocessing? Default is 1.
     :param includeOnly: only run correlations of specified columns/combinations
-    :param nProcess: how many multithreaded processes to use. May speed up calculations. Default is 1.
+    :param nProcess: how many multithreaded processes to use. May speed up calculations. Default is 1. 'max' may be passed to use all cores.
     :return: tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays
 
     Future Parameters:
@@ -207,6 +208,18 @@ def iciktArray(dataArray: np.ndarray,
 
     # Set the global variable globalData equal to the input dataArray
     shm = initialize_global_data(dataArray)
+
+    # check if we have an integer or string nProcess, and set the right number of things
+    if isinstance(nProcess, str):
+        if nProcess == "max":
+            nProcess = os.cpu_count()
+        else:
+            try: 
+                nProcess = int(nProcess)
+            except ValueError:
+                log.warning("nProcess should have been an integer, or the string 'max', setting to 1 process.")
+                nProcess = 1
+
 
     # bool array where the nans are True
     excludeLoc = setupMissingMatrix(dataArray, globalNA)
