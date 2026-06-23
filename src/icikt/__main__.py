@@ -4,7 +4,7 @@ Python Information-Content-Informed Kendall Tau Correlation (ICIKT)
 
 
 Usage:
-    icikt.py iciktArray <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--mode=<perspective>] [--scale=<scaleMax>] [--diag=<diagGood>] [--chunk=<chunkSize>] [--output=<outname>] [--include=<includeOnly>]
+    icikt.py iciktArray <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--mode=<perspective>] [--scale=<scaleMax>] [--diag=<diagGood>] [--chunk=<chunkSize>] [--output=<outname>] [--include=<includeOnly>] [--nprocess=<nProcess>]
     icikt.py leftCensor <dataFilePath> [--data-format=<format>] [--replace=<globalNA>] [--samples=<sampleClasses>]
     icikt.py -h | --help
     icikt.py --version
@@ -20,6 +20,7 @@ Options:
     --chunk=<chunkSize>         What should the size of the chunks be for multiprocessing [default: 1]?
     --output=<outname>          If you want to save results as a csv, specify the path/to/save/fileID
     --include=<includeOnly>     Only run correlations of specified columns/combinations
+    --nprocess=<nProcess>       How many multithreaded process to use. May speed up calculations. [default: 1]
     --samples=<sampleClasses>   Which samples are in which classes? Specify a path to a csv.
 
 """
@@ -119,8 +120,13 @@ def main():
             log.error(f"Error: '{args['--chunk'] = }' is not a valid integer.")
             sys.exit(1)
 
+        try: 
+            int(args['--nprocess'])
+        except ValueError:
+            log.error(f"Error: '{args['--nprocess'] = }' is not a valid integer.")
+
         try:
-            out, corr, pVal, tMax = icikt.iciktArray(dataArray=args["<dataFilePath>"], globalNA=args["--replace"], perspective=args["--mode"], scaleMax=args["--scale"], diagGood=args["--diag"], chunkSize=int(args["--chunk"]), includeOnly=args['--include'])
+            out, corr, pVal, tMax = icikt.iciktArray(dataArray=args["<dataFilePath>"], globalNA=args["--replace"], perspective=args["--mode"], scaleMax=args["--scale"], diagGood=args["--diag"], chunkSize=int(args["--chunk"]), includeOnly=args['--include'], nProcess=args['--nprocess'])
 
             if args["--output"] is not None:
                 np.savetxt(args["--output"]+'outArray.csv', out, delimiter=',')
