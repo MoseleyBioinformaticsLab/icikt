@@ -126,7 +126,7 @@ def main():
             log.error(f"Error: '{args['--nprocess'] = }' is not a valid integer.")
 
         try:
-            out, corr, pVal, tMax = icikt.iciktArray(dataArray=args["<dataFilePath>"], globalNA=args["--replace"], perspective=args["--mode"], scaleMax=args["--scale"], diagGood=args["--diag"], chunkSize=int(args["--chunk"]), includeOnly=args['--include'], nProcess=args['--nprocess'])
+            out, corr, pVal, tMax = icikt.iciktArray(dataArray=args["<dataFilePath>"], globalNA=args["--replace"], perspective=args["--mode"], scaleMax=args["--scale"], diagGood=args["--diag"], chunkSize=int(args["--chunk"]), includeOnly=args['--include'], nProcess=int(args['--nprocess']))
 
             if args["--output"] is not None:
                 np.savetxt(args["--output"]+'outArray.csv', out, delimiter=',')
