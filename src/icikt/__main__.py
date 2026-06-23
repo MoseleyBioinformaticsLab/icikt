@@ -20,7 +20,7 @@ Options:
     --chunk=<chunkSize>         What should the size of the chunks be for multiprocessing [default: 1]?
     --output=<outname>          If you want to save results as a csv, specify the path/to/save/fileID
     --include=<includeOnly>     Only run correlations of specified columns/combinations
-    --nprocess=<nProcess>       How many multithreaded process to use. May speed up calculations. 'max' may be passed to use all cores. [default: 1]
+    --nprocess=<nProcess>       How many multithreaded process to use. May speed up calculations. 'all' may be passed to use all available cores. [default: 1]
     --samples=<sampleClasses>   Which samples are in which classes? Specify a path to a csv.
 
 """
