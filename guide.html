@@ -1,23 +1,21 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>icikt &mdash; icikt 1.5.3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+  <title>icikt &mdash; icikt 1.6.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=d75fd82e"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e15882dc"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -36,9 +34,6 @@
           <a href="index.html" class="icon icon-home">
             icikt
           </a>
-              <div class="version">
-                1.5.3
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -61,6 +56,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#citation">Citation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
 </ul>
 </li>
@@ -104,7 +100,7 @@ and discordant pairs used in calculating the correlation value.</p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">icikt</span></code> package runs under Python 3.8+. Use <a class="reference external" href="https://pip.pypa.io/">pip</a> to install.
+<p>The <code class="docutils literal notranslate"><span class="pre">icikt</span></code> package runs under Python 3.10+. Use <a class="reference external" href="https://pip.pypa.io/">pip</a> to install.
 Starting with Python 3.4, <a class="reference external" href="https://pip.pypa.io/">pip</a> is included by default.</p>
 <section id="install-on-linux-mac-os-x">
 <h3>Install on Linux, Mac OS X<a class="headerlink" href="#install-on-linux-mac-os-x" title="Link to this heading"></a></h3>
@@ -221,8 +217,8 @@ be called from the command-line interface given the file path for the data along
 </pre></div>
 </div>
 <p>Running through python script :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">icikt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">icikt</span>
 
 <span class="n">dataArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;/path/to/file.tsv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="c1"># or with random values</span>
@@ -235,6 +231,13 @@ be called from the command-line interface given the file path for the data along
 <span class="n">scaled</span><span class="p">,</span> <span class="n">corrRaw</span><span class="p">,</span> <span class="n">pVals</span><span class="p">,</span> <span class="n">tauMax</span> <span class="o">=</span> <span class="n">icikt</span><span class="o">.</span><span class="n">iciktArray</span><span class="p">(</span><span class="n">dataArray</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="citation">
+<h2>Citation<a class="headerlink" href="#citation" title="Link to this heading"></a></h2>
+<p>If you use the <code class="docutils literal notranslate"><span class="pre">icikt</span></code> package in your work, please cite the related publication:</p>
+<ul class="simple">
+<li><p>R.M. Flight, P.S. Bhatt, H.N.B. Moseley. “Information-Content-Informed Kendall-Tau Correlation Methodology: Interpreting Missing Values in Metabolomics as Potentially Useful Information.” <em>Metabolites</em> (2026) 16:4, doi: <a class="reference external" href="https://doi.org/10.3390/metabo16040245">10.3390/metabo16040245</a></p></li>
+</ul>
 </section>
 <section id="license">
 <h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>

@@ -1,22 +1,20 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>icikt.methods &mdash; icikt 1.5.3 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+  <title>icikt.methods &mdash; icikt 1.6.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=d75fd82e"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e15882dc"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -33,9 +31,6 @@
           <a href="../../index.html" class="icon icon-home">
             icikt
           </a>
-              <div class="version">
-                1.5.3
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -84,25 +79,26 @@
 <span class="sd">arrays, while also handling missing values or values which need to be removed.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">multiprocessing</span>
-<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">shared_memory</span>
-<span class="kn">import</span> <span class="nn">functools</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">t</span>
-<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
-<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">mstats_basic</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">distributions</span>
-<span class="kn">from</span> <span class="nn">icikt.utility</span> <span class="kn">import</span> <span class="n">setupMissingMatrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">multiprocessing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">shared_memory</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">t</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">it</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">log</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">mstats_basic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">distributions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">icikt.utility</span><span class="w"> </span><span class="kn">import</span> <span class="n">setupMissingMatrix</span>
 
-<span class="kn">import</span> <span class="nn">pyximport</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyximport</span>
 <span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">icikt</span> <span class="kn">import</span> <span class="n">c_kendall_dis</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">icikt</span><span class="w"> </span><span class="kn">import</span> <span class="n">c_kendall_dis</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">icikt</span> <span class="kn">import</span> <span class="n">kendall_dis</span> <span class="k">as</span> <span class="n">c_kendall_dis</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">icikt</span><span class="w"> </span><span class="kn">import</span> <span class="n">kendall_dis</span> <span class="k">as</span> <span class="n">c_kendall_dis</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Cython package is not properly installed&quot;</span><span class="p">)</span>
 
 
@@ -110,7 +106,7 @@
 
 <div class="viewcode-block" id="initialize_global_data">
 <a class="viewcode-back" href="../../api.html#icikt.methods.initialize_global_data">[docs]</a>
-<span class="k">def</span> <span class="nf">initialize_global_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize_global_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the global data array using shared memory</span>
 
 <span class="sd">    :param data: data input</span>
@@ -126,7 +122,7 @@
 
 <div class="viewcode-block" id="get_global_data">
 <a class="viewcode-back" href="../../api.html#icikt.methods.get_global_data">[docs]</a>
-<span class="k">def</span> <span class="nf">get_global_data</span><span class="p">(</span><span class="n">shmName</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_global_data</span><span class="p">(</span><span class="n">shmName</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieve global data from shared memory.</span>
 
 <span class="sd">    :param shmName: Name of global data</span>
@@ -143,7 +139,7 @@
 
 <div class="viewcode-block" id="icikt_mp_wrapper">
 <a class="viewcode-back" href="../../api.html#icikt.methods.icikt_mp_wrapper">[docs]</a>
-<span class="k">def</span> <span class="nf">icikt_mp_wrapper</span><span class="p">(</span><span class="n">pairwiseIndices</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">perspective</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">shm</span><span class="p">:</span> <span class="n">shared_memory</span><span class="o">.</span><span class="n">SharedMemory</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">icikt_mp_wrapper</span><span class="p">(</span><span class="n">pairwiseIndices</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">perspective</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">shm</span><span class="p">:</span> <span class="n">shared_memory</span><span class="o">.</span><span class="n">SharedMemory</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper function which is given to multiprocessing. This then calls the icikt method using the indices of pairwise combinations and the perspective.</span>
 
 <span class="sd">       :param pairwiseIndices: Indices of pairwise combination</span>
@@ -161,7 +157,7 @@
 
 <div class="viewcode-block" id="icikt">
 <a class="viewcode-back" href="../../api.html#icikt.methods.icikt">[docs]</a>
-<span class="k">def</span> <span class="nf">icikt</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">perspective</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">icikt</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">perspective</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds missing values, and replaces them with a value slightly smaller than the minimum between both arrays.</span>
 
 <span class="sd">    :param x: First array of data</span>
@@ -170,7 +166,7 @@
 <span class="sd">    :return: tuple with correlation, pvalue, and tauMax values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">countRankTie</span><span class="p">(</span><span class="n">ranks</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">countRankTie</span><span class="p">(</span><span class="n">ranks</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Counts rank ties.</span>
 
 <span class="sd">        :param ranks: input array</span>
@@ -183,7 +179,7 @@
                 <span class="p">(</span><span class="n">count</span> <span class="o">*</span> <span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
                 <span class="p">(</span><span class="n">count</span> <span class="o">*</span> <span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
-    <span class="k">def</span> <span class="nf">normtestFinish</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">normtestFinish</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Common code between all the normality-test functions.</span>
 
 <span class="sd">        :param z: z value</span>
@@ -270,13 +266,14 @@
 
 <div class="viewcode-block" id="iciktArray">
 <a class="viewcode-back" href="../../api.html#icikt.methods.iciktArray">[docs]</a>
-<span class="k">def</span> <span class="nf">iciktArray</span><span class="p">(</span><span class="n">dataArray</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">iciktArray</span><span class="p">(</span><span class="n">dataArray</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                <span class="n">globalNA</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">],</span>
                <span class="n">perspective</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span><span class="p">,</span>
                <span class="n">scaleMax</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                <span class="n">diagGood</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                <span class="n">chunkSize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-               <span class="n">includeOnly</span><span class="p">:</span> <span class="nb">tuple</span> <span class="ow">or</span> <span class="nb">int</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+               <span class="n">includeOnly</span><span class="p">:</span> <span class="nb">tuple</span> <span class="ow">or</span> <span class="nb">int</span> <span class="ow">or</span> <span class="nb">float</span> <span class="ow">or</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">nProcess</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calls iciKT to calculate ICI-Kendall-Tau between every combination of</span>
 <span class="sd">    columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.</span>
 
@@ -287,6 +284,7 @@
 <span class="sd">    :param diagGood: should the diagonal entries reflect how many entries in the sample were &quot;good&quot;?</span>
 <span class="sd">    :param chunkSize: What should the size of the chunks be for multiprocessing? Default is 1.</span>
 <span class="sd">    :param includeOnly: only run correlations of specified columns/combinations</span>
+<span class="sd">    :param nProcess: how many multithreaded processes to use. May speed up calculations. Default is 1. &#39;all&#39; may be passed to use all available cores.</span>
 <span class="sd">    :return: tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays</span>
 
 <span class="sd">    Future Parameters:</span>
@@ -297,6 +295,18 @@
 
     <span class="c1"># Set the global variable globalData equal to the input dataArray</span>
     <span class="n">shm</span> <span class="o">=</span> <span class="n">initialize_global_data</span><span class="p">(</span><span class="n">dataArray</span><span class="p">)</span>
+
+    <span class="c1"># check if we have an integer or string nProcess, and set the right number of things</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nProcess</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">nProcess</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+            <span class="n">nProcess</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span> 
+                <span class="n">nProcess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nProcess</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;nProcess should have been an integer, or the string &#39;all&#39;, setting to 1 process.&quot;</span><span class="p">)</span>
+                <span class="n">nProcess</span> <span class="o">=</span> <span class="mi">1</span>
+
 
     <span class="c1"># bool array where the nans are True</span>
     <span class="n">excludeLoc</span> <span class="o">=</span> <span class="n">setupMissingMatrix</span><span class="p">(</span><span class="n">dataArray</span><span class="p">,</span> <span class="n">globalNA</span><span class="p">)</span>
@@ -347,7 +357,7 @@
                                                     <span class="n">dtype</span><span class="o">=</span><span class="n">dataArray</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
         <span class="c1"># calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list]</span>
-        <span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Pool</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">nProcess</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
             <span class="n">tempList</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">wrapperWithSharedMemory</span><span class="p">,</span> <span class="n">pairwiseComparisons</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunkSize</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">shm</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
