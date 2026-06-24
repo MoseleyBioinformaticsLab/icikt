@@ -12,7 +12,7 @@ Full API documentation, user guide, and tutorial can be found on Github_Pages_
 
 Installation
 --------------
-The ``icikt`` package runs under Python 3.8+. Use pip_ to install.
+The ``icikt`` package runs under Python 3.10+. Use pip_ to install.
 Starting with Python 3.4, pip_ is included by default.
 
 
