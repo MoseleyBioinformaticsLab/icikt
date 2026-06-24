@@ -15,6 +15,7 @@ import numpy as np
 import typing as t
 import itertools as it
 import logging as log
+import os
 from scipy.stats import mstats_basic
 from scipy.stats import distributions
 from icikt.utility import setupMissingMatrix
@@ -184,7 +185,8 @@ def iciktArray(dataArray: np.ndarray,
                scaleMax: bool = True,
                diagGood: bool = True,
                chunkSize: int = 1,
-               includeOnly: tuple or int or float or None = None) -> tuple:
+               includeOnly: tuple or int or float or None = None,
+               nProcess: int = 1) -> tuple:
     """Calls iciKT to calculate ICI-Kendall-Tau between every combination of
     columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.
 
@@ -195,6 +197,7 @@ def iciktArray(dataArray: np.ndarray,
     :param diagGood: should the diagonal entries reflect how many entries in the sample were "good"?
     :param chunkSize: What should the size of the chunks be for multiprocessing? Default is 1.
     :param includeOnly: only run correlations of specified columns/combinations
+    :param nProcess: how many multithreaded processes to use. May speed up calculations. Default is 1. 'all' may be passed to use all available cores.
     :return: tuple of the output correlations, raw correlations, pvalues, and max tau 2d arrays
 
     Future Parameters:
@@ -205,6 +208,18 @@ def iciktArray(dataArray: np.ndarray,
 
     # Set the global variable globalData equal to the input dataArray
     shm = initialize_global_data(dataArray)
+
+    # check if we have an integer or string nProcess, and set the right number of things
+    if isinstance(nProcess, str):
+        if nProcess == "all":
+            nProcess = os.cpu_count()
+        else:
+            try: 
+                nProcess = int(nProcess)
+            except ValueError:
+                log.warning("nProcess should have been an integer, or the string 'all', setting to 1 process.")
+                nProcess = 1
+
 
     # bool array where the nans are True
     excludeLoc = setupMissingMatrix(dataArray, globalNA)
@@ -255,7 +270,7 @@ def iciktArray(dataArray: np.ndarray,
                                                     dtype=dataArray.dtype)
 
         # calls iciKT to calculate ICIKendallTau for every combination in product and stores in a list]
-        with multiprocessing.get_context('spawn').Pool() as pool:
+        with multiprocessing.get_context('spawn').Pool(nProcess) as pool:
             tempList = pool.map(wrapperWithSharedMemory, pairwiseComparisons.T, chunksize=chunkSize)
     finally:
         shm.close()
