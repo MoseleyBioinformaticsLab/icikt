@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "Please cite this software using the metadata from 'preferred-citation'."
+authors:
+- family-names: "Bhatt"
+  given-names: "Praneeth S."
+  orcid: "https://orcid.org/0000-0001-6261-0742"
+- family-names: "Flight"
+  given-names: "Robert M."
+  orcid: "https://orcid.org/0000-0001-8141-7788"
+- family-names: "Moseley"
+  given-names: "Hunter N.B."
+  orcid: "https://orcid.org/0000-0003-3995-5368"
+title: "icikt"
+date-released: 2024-08-30
+repository-code: "https://github.com/MoseleyBioinformaticsLab/icikt"
+type: "software"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Flight"
+    given-names: "Robert M."
+    orcid: "https://orcid.org/0000-0001-8141-7788"
+  - family-names: "Bhatt"
+    given-names: "Praneeth S."
+    orcid: "https://orcid.org/0000-0001-6261-0742"
+  - family-names: "Moseley"
+    given-names: "Hunter N.B."
+    orcid: "https://orcid.org/0000-0003-3995-5368"
+  doi: "10.3390/metabo16040245"
+  journal: "Metabolites"
+  month: 4
+  title: "Information-Content-Informed Kendall-Tau Correlation Methodology: Interpreting Missing Values in Metabolomics as Potentially Useful Information"
+  issue: 16
+  volume: 4
+  year: 2026

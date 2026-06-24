@@ -143,7 +143,12 @@ Running through python script :
         scaled, corrRaw, pVals, tauMax = icikt.iciktArray(dataArray)
 
         
+Citation
+-------
 
+If you use the ``icikt`` package in your work, please cite the related publication:
+
+* R.M. Flight, P.S. Bhatt, H.N.B. Moseley. "Information-Content-Informed Kendall-Tau Correlation Methodology: Interpreting Missing Values in Metabolomics as Potentially Useful Information." *Metabolites* (2026) 16:4, doi: `10.3390/metabo16040245`_
 
 License
 -------
@@ -196,3 +201,4 @@ DAMAGE.
 .. _scipy: https://scipy.org/scipylib/index.html
 .. _docopt: http://docopt.org/
 .. _Cython: https://cython.org/
+.. _10.3390/metabo16040245: https://doi.org/10.3390/metabo16040245

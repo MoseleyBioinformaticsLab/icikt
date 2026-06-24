@@ -186,7 +186,7 @@ def iciktArray(dataArray: np.ndarray,
                diagGood: bool = True,
                chunkSize: int = 1,
                includeOnly: tuple or int or float or None = None,
-               nProcess: int = 1) -> tuple:
+               nProcess: int | str = 1) -> tuple:
     """Calls iciKT to calculate ICI-Kendall-Tau between every combination of
     columns in the input 2d array, dataArray. Also replaces any instance of the globalNA in the array with np.nan.
 
