@@ -144,7 +144,7 @@ Running through python script :
 
         
 Citation
--------
+--------
 
 If you use the ``icikt`` package in your work, please cite the related publication:
 
